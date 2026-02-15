@@ -367,7 +367,7 @@
             window.open(whatsappUrl, '_blank');
         }
         
-        async function generateShareImage(cardId, title, reality) {
+        async function generateShareImage(cardId, title, lie, reality, sources) {
             // Instagram Story: 1080x1920
             const canvas = document.createElement('canvas');
             canvas.width = 1080;
@@ -376,7 +376,6 @@
             const ctx = canvas.getContext('2d');
             
             // ===== FUNDO PREMIUM =====
-            // Gradiente sofisticado: verde Brasil + preto elegante
             const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             bgGradient.addColorStop(0, '#004d1a');
             bgGradient.addColorStop(0.4, '#009C3B');
@@ -384,7 +383,7 @@
             ctx.fillStyle = bgGradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Padrão geométrico sutil (linhas diagonais)
+            // Padrão geométrico sutil
             ctx.strokeStyle = 'rgba(252, 209, 22, 0.03)';
             ctx.lineWidth = 1;
             for (let i = -canvas.height; i < canvas.width; i += 40) {
@@ -394,77 +393,115 @@
                 ctx.stroke();
             }
             
-            // ===== HEADER MINIMAL =====
-            // Branding tag (small, subtle)
+            // ===== HEADER =====
             ctx.fillStyle = 'rgba(252, 209, 22, 0.8)';
-            ctx.font = '600 18px Inter, sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText('MENTIRÓMETRO', 60, 100);
-            
-            // ===== MAIN QUESTION - HUGE & BOLD =====
-            const mainY = 380;
-            ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 72px Inter, sans-serif';
+            ctx.font = '600 20px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.lineWidth = 3;
+            ctx.fillText('MENTIRÓMETRO FLÁVIO', canvas.width / 2, 90);
             
-            const titleLines = wrapText(ctx, title, canvas.width - 80, 72);
-            let yPos = mainY;
+            // ===== QUESTION TITLE =====
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 60px Inter, sans-serif';
+            const titleLines = wrapText(ctx, title, canvas.width - 80, 60);
+            let yPos = 200;
             titleLines.forEach(line => {
                 ctx.fillText(line, canvas.width / 2, yPos);
-                yPos += 90;
+                yPos += 75;
             });
             
-            // ===== REALITY SECTION - ELEGANT =====
-            const realityStartY = yPos + 80;
-            
-            // Small separator line
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            // ===== SECTION 1: O QUE FOI DITO (MENTIRA) =====
+            yPos += 40;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(120, realityStartY);
-            ctx.lineTo(canvas.width - 120, realityStartY);
+            ctx.moveTo(80, yPos);
+            ctx.lineTo(canvas.width - 80, yPos);
             ctx.stroke();
             
-            // "REALIDADE" label
-            ctx.fillStyle = '#FCD116';
-            ctx.font = '600 22px Inter, sans-serif';
+            // Label "MENTIRA"
+            ctx.fillStyle = '#FF6B6B';
+            ctx.font = '600 20px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('REALIDADE', 120, realityStartY + 70);
+            ctx.fillText('❌ O QUE FOI DITO', 80, yPos + 50);
             
-            // Reality body text - large, clear
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.font = '32px Inter, sans-serif';
-            const realityLines = wrapText(ctx, reality, canvas.width - 240, 32);
-            let realityY = realityStartY + 150;
-            realityLines.slice(0, 5).forEach((line, idx) => {
-                if (idx < 5) {
-                    ctx.fillText(line, 120, realityY);
-                    realityY += 55;
-                }
+            // Lie text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+            ctx.font = 'italic 22px Inter, sans-serif';
+            const lieLines = wrapText(ctx, `"${lie}"`, canvas.width - 160, 22);
+            let lieY = yPos + 95;
+            lieLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, 100, lieY);
+                lieY += 40;
             });
             
-            // ===== FOOTER PREMIUM =====
-            // Top footer separator
+            // ===== SECTION 2: REALIDADE =====
+            yPos = lieY + 40;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(80, yPos);
+            ctx.lineTo(canvas.width - 80, yPos);
+            ctx.stroke();
+            
+            // Label "REALIDADE"
+            ctx.fillStyle = '#52C41A';
+            ctx.font = '600 20px Inter, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('✓ REALIDADE', 80, yPos + 50);
+            
+            // Reality text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            ctx.font = '24px Inter, sans-serif';
+            const realityLines = wrapText(ctx, reality, canvas.width - 160, 24);
+            let realityY = yPos + 95;
+            realityLines.slice(0, 4).forEach(line => {
+                ctx.fillText(line, 100, realityY);
+                realityY += 40;
+            });
+            
+            // ===== SECTION 3: FONTES =====
+            yPos = realityY + 40;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(80, yPos);
+            ctx.lineTo(canvas.width - 80, yPos);
+            ctx.stroke();
+            
+            // Label "FONTES"
+            ctx.fillStyle = '#1890FF';
+            ctx.font = '600 18px Inter, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('📚 FONTES VERIFICADAS', 80, yPos + 45);
+            
+            // Sources text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.font = '18px Inter, sans-serif';
+            const sourcesLines = wrapText(ctx, sources, canvas.width - 160, 18);
+            let sourcesY = yPos + 90;
+            sourcesLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, 100, sourcesY);
+                sourcesY += 35;
+            });
+            
+            // ===== FOOTER =====
             ctx.strokeStyle = 'rgba(252, 209, 22, 0.5)';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(120, 1780);
-            ctx.lineTo(canvas.width - 120, 1780);
+            ctx.moveTo(80, 1800);
+            ctx.lineTo(canvas.width - 80, 1800);
             ctx.stroke();
             
-            // URL
             ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = '600 28px Inter, sans-serif';
+            ctx.font = '600 24px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1850);
+            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1860);
             
-            // CTA
             ctx.fillStyle = '#FCD116';
-            ctx.font = '500 20px Inter, sans-serif';
+            ctx.font = '500 18px Inter, sans-serif';
             ctx.fillText('Compartilhe a verdade', canvas.width / 2, 1905);
             
-            // Download with timestamp
+            // Download
             canvas.toBlob(function(blob) {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -567,7 +604,7 @@
             </div>
             <div class="button-group">
                 <button class="share-button" onclick="shareOnWhatsApp('Bolsonaro Moderado?', 'Flávio promete ser moderado mas defende exatamente as mesmas políticas do pai.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card1', 'Bolsonaro Moderado?', 'Flávio diz em campanha que vai ser moderado, mas defende exatamente as mesmas políticas do pai.')">🖼️ Imagem</button>
+                <button class="image-button" onclick="generateShareImage('card1', 'Bolsonaro Moderado?', 'Flávio promete ser moderado...', 'Flávio diz em campanha que vai ser moderado, mas defende exatamente as mesmas políticas do pai.', 'Folha de S.Paulo, Bloomberg')">🖼️ Imagem</button>
             </div>
         </div>
         
@@ -588,7 +625,7 @@
             </div>
             <div class="button-group">
                 <button class="share-button" onclick="shareOnWhatsApp('STF Condenação', 'Bolsonaro foi condenado por órgãos judiciais por tentar golpe.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card2', 'Prisão Injusta?', 'Bolsonaro foi condenado por órgãos judiciais por tentar um golpe — não foi injustiça.')">🖼️ Imagem</button>
+                <button class="image-button" onclick="generateShareImage('card2', 'Prisão Injusta?', 'Meu pai foi preso injustamente...', 'Bolsonaro foi condenado por órgãos judiciais por tentar um golpe, não perseguição.', 'STF, TSE')">🖼️ Imagem</button>
             </div>
         </div>
         
@@ -609,7 +646,7 @@
             </div>
             <div class="button-group">
                 <button class="share-button" onclick="shareOnWhatsApp('Crescimento Econômico', 'IBGE: Bolsonaro = 1,3% ao ano. Lula = 2,5%.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card3', 'Crescimento de 3%?', 'IBGE: crescimento médio Bolsonaro foi 1,3% ao ano — pior que Lula (2,5%).')">🖼️ Imagem</button>
+                <button class="image-button" onclick="generateShareImage('card3', 'Crescimento de 3%?', 'Economia cresceu 3% ao ano...', 'IBGE: crescimento médio Bolsonaro foi 1,3% ao ano. Lula = 2,5%.', 'IBGE, Banco Central')">🖼️ Imagem</button>
             </div>
         </div>
         
@@ -630,7 +667,7 @@
             </div>
             <div class="button-group">
                 <button class="share-button" onclick="shareOnWhatsApp('Empregos', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card4', 'Milhões de Empregos?', 'CAGED: Bolsonaro criou 1.1 milhão. Lula criou 3.2 milhões em período equivalente.')">🖼️ Imagem</button>
+                <button class="image-button" onclick="generateShareImage('card4', 'Milhões de Empregos?', 'Bolsonaro criou 4 milhões...', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.', 'CAGED, IBGE')">🖼️ Imagem</button>
             </div>
         </div>
         
@@ -651,7 +688,7 @@
             </div>
             <div class="button-group">
                 <button class="share-button" onclick="shareOnWhatsApp('Inflação', 'Bolsonaro terminou com 5,8%. Queda recente = mérito de Lula.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card5', 'Inflação Controlada?', 'Bolsonaro terminou com 5,8% de inflação. A redução recente é mérito de Lula.')">🖼️ Imagem</button>
+                <button class="image-button" onclick="generateShareImage('card5', 'Inflação Controlada?', 'Inflação caiu porque Bolsonaro...', 'Bolsonaro terminou com 5,8%. A redução recente é mérito de Lula.', 'Banco Central, IBGE')">🖼️ Imagem</button>
             </div>
         </div>
         
@@ -672,7 +709,7 @@
             </div>
             <div class="button-group">
                 <button class="share-button" onclick="shareOnWhatsApp('Rachadinha', 'Flávio investigado por corrupção (rachadinha) no RJ.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card6', 'Combater Corrupção?', 'Flávio foi investigado por rachadinha (corrupção) quando era deputado no RJ.')">🖼️ Imagem</button>
+                <button class="image-button" onclick="generateShareImage('card6', 'Combater Corrupção?', 'Vou combater a corrupção...', 'Flávio foi investigado por rachadinha (corrupção) quando era deputado no RJ.', 'STJ, TCE-RJ')">🖼️ Imagem</button>
             </div>
         </div>
     </div>
