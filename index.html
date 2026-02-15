@@ -248,6 +248,49 @@
             text-decoration: underline;
         }
         
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .share-button, .image-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .share-button {
+            background: #25D366;
+            color: white;
+        }
+        
+        .share-button:hover {
+            background: #1eac50;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        
+        .image-button {
+            background: #FCD116;
+            color: #1a1a1a;
+        }
+        
+        .image-button:hover {
+            background: #e6b800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(252, 209, 22, 0.3);
+        }
+        
         .share-button {
             display: inline-flex;
             align-items: center;
@@ -315,12 +358,111 @@
             }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         function shareOnWhatsApp(title, text) {
             const siteUrl = 'https://lis-sil-grazi.github.io/flavio-bolsonaro-mentirometro/';
             const message = `📍 *${title}*\n\n${text}\n\n🔗 Confira no Mentirómetro:\n${siteUrl}`;
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
+        }
+        
+        async function generateShareImage(cardId, title, reality) {
+            // Criar canvas temporário com design profissional
+            const canvas = document.createElement('canvas');
+            canvas.width = 1200;
+            canvas.height = 630;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Fundo gradiente (cores Brasil)
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#009C3B');
+            gradient.addColorStop(1, '#007a2e');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Logo/Título
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 28px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('🚨 MENTIRÓMETRO FLÁVIO', canvas.width / 2, 50);
+            
+            // Separador
+            ctx.strokeStyle = '#FCD116';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(100, 70);
+            ctx.lineTo(canvas.width - 100, 70);
+            ctx.stroke();
+            
+            // Título da mentira (com quebra de linha se necessário)
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 32px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            const titleLines = wrapText(ctx, title, canvas.width - 80, 32);
+            let yPos = 120;
+            titleLines.forEach(line => {
+                ctx.fillText(line, canvas.width / 2, yPos);
+                yPos += 40;
+            });
+            
+            // Box da realidade
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            ctx.fillRect(40, yPos + 20, canvas.width - 80, 180);
+            
+            // Texto da realidade
+            ctx.fillStyle = '#009C3B';
+            ctx.font = 'bold 16px Inter, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('✓ REALIDADE:', 60, yPos + 45);
+            
+            ctx.fillStyle = '#1a1a1a';
+            ctx.font = '14px Inter, sans-serif';
+            const realityLines = wrapText(ctx, reality, canvas.width - 120, 14);
+            let realityY = yPos + 70;
+            realityLines.slice(0, 4).forEach(line => {
+                ctx.fillText(line, 60, realityY);
+                realityY += 22;
+            });
+            
+            // Footer
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 16px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Confira mais em: mentirómetro.flávio.com.br', canvas.width / 2, 600);
+            
+            // Converter pra imagem e fazer download
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `mentirometro-flavio-${Date.now()}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+        
+        function wrapText(ctx, text, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            
+            words.forEach(word => {
+                const testLine = currentLine + (currentLine ? ' ' : '') + word;
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > maxWidth) {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = testLine;
+                }
+            });
+            
+            if (currentLine) lines.push(currentLine);
+            return lines;
         }
     </script>
 </head>
@@ -376,7 +518,10 @@
                 <a href="https://www1.folha.uol.com.br/poder/2025/12/flavio-bolsonaro-busca-ex-ministros-marcal-e-politicos-com-transito-no-mercado.shtml" target="_blank">📰 Folha de S.Paulo</a>
                 <a href="https://www.bloomberg.com/news/articles/2026-02-02/brazil-politics-lula-to-adapt-message-flavio-replicates-father" target="_blank">📰 Bloomberg</a>
             </div>
-            <button class="share-button" onclick="shareOnWhatsApp('Bolsonaro Moderado?', 'Flávio promete ser moderado mas defende exatamente as mesmas políticas do pai.')">📲 Compartilhar</button>
+            <div class="button-group">
+                <button class="share-button" onclick="shareOnWhatsApp('Bolsonaro Moderado?', 'Flávio promete ser moderado mas defende exatamente as mesmas políticas do pai.')">📲 WhatsApp</button>
+                <button class="image-button" onclick="generateShareImage('card1', 'Bolsonaro Moderado?', 'Flávio diz em campanha que vai ser moderado, mas defende exatamente as mesmas políticas do pai.')">🖼️ Imagem</button>
+            </div>
         </div>
         
         <div class="lie-card">
@@ -394,7 +539,10 @@
                 <a href="https://www.stf.jus.br" target="_blank">⚖️ STF (Supremo Tribunal Federal)</a>
                 <a href="https://www.tse.jus.br" target="_blank">⚖️ TSE (Tribunal Superior Eleitoral)</a>
             </div>
-            <button class="share-button" onclick="shareOnWhatsApp('STF Condenação', 'Bolsonaro foi condenado por órgãos judiciais por tentar golpe.')">📲 Compartilhar</button>
+            <div class="button-group">
+                <button class="share-button" onclick="shareOnWhatsApp('STF Condenação', 'Bolsonaro foi condenado por órgãos judiciais por tentar golpe.')">📲 WhatsApp</button>
+                <button class="image-button" onclick="generateShareImage('card2', 'Prisão Injusta?', 'Bolsonaro foi condenado por órgãos judiciais por tentar um golpe — não foi injustiça.')">🖼️ Imagem</button>
+            </div>
         </div>
         
         <div class="lie-card">
@@ -412,7 +560,10 @@
                 <a href="https://www.ibge.gov.br/explica/pib.php" target="_blank">📊 IBGE - PIB Brasil</a>
                 <a href="https://www.bcb.gov.br" target="_blank">📊 Banco Central do Brasil</a>
             </div>
-            <button class="share-button" onclick="shareOnWhatsApp('Crescimento Econômico', 'IBGE: Bolsonaro = 1,3% ao ano. Lula = 2,5%.')">📲 Compartilhar</button>
+            <div class="button-group">
+                <button class="share-button" onclick="shareOnWhatsApp('Crescimento Econômico', 'IBGE: Bolsonaro = 1,3% ao ano. Lula = 2,5%.')">📲 WhatsApp</button>
+                <button class="image-button" onclick="generateShareImage('card3', 'Crescimento de 3%?', 'IBGE: crescimento médio Bolsonaro foi 1,3% ao ano — pior que Lula (2,5%).')">🖼️ Imagem</button>
+            </div>
         </div>
         
         <div class="lie-card">
@@ -430,7 +581,10 @@
                 <a href="https://www.gov.br/trabalho/pt-br" target="_blank">📊 CAGED - Ministério do Trabalho</a>
                 <a href="https://www.ibge.gov.br/explica/desemprego.php" target="_blank">📊 IBGE - Taxa de Desemprego</a>
             </div>
-            <button class="share-button" onclick="shareOnWhatsApp('Empregos', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.')">📲 Compartilhar</button>
+            <div class="button-group">
+                <button class="share-button" onclick="shareOnWhatsApp('Empregos', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.')">📲 WhatsApp</button>
+                <button class="image-button" onclick="generateShareImage('card4', 'Milhões de Empregos?', 'CAGED: Bolsonaro criou 1.1 milhão. Lula criou 3.2 milhões em período equivalente.')">🖼️ Imagem</button>
+            </div>
         </div>
         
         <div class="lie-card">
@@ -448,7 +602,10 @@
                 <a href="https://www.bcb.gov.br/controleinflacao/historicotaxas" target="_blank">📊 Banco Central - Inflação</a>
                 <a href="https://www.ibge.gov.br/explica/inflacao.php" target="_blank">📊 IBGE - IPCA</a>
             </div>
-            <button class="share-button" onclick="shareOnWhatsApp('Inflação', 'Bolsonaro terminou com 5,8%. Queda recente = mérito de Lula.')">📲 Compartilhar</button>
+            <div class="button-group">
+                <button class="share-button" onclick="shareOnWhatsApp('Inflação', 'Bolsonaro terminou com 5,8%. Queda recente = mérito de Lula.')">📲 WhatsApp</button>
+                <button class="image-button" onclick="generateShareImage('card5', 'Inflação Controlada?', 'Bolsonaro terminou com 5,8% de inflação. A redução recente é mérito de Lula.')">🖼️ Imagem</button>
+            </div>
         </div>
         
         <div class="lie-card">
@@ -466,7 +623,10 @@
                 <a href="https://www.stj.jus.br" target="_blank">⚖️ STJ - Tribunal de Justiça</a>
                 <a href="https://www.tce.rj.gov.br" target="_blank">⚖️ TCE-RJ - Tribunal de Contas</a>
             </div>
-            <button class="share-button" onclick="shareOnWhatsApp('Rachadinha', 'Flávio investigado por corrupção (rachadinha) no RJ.')">📲 Compartilhar</button>
+            <div class="button-group">
+                <button class="share-button" onclick="shareOnWhatsApp('Rachadinha', 'Flávio investigado por corrupção (rachadinha) no RJ.')">📲 WhatsApp</button>
+                <button class="image-button" onclick="generateShareImage('card6', 'Combater Corrupção?', 'Flávio foi investigado por rachadinha (corrupção) quando era deputado no RJ.')">🖼️ Imagem</button>
+            </div>
         </div>
     </div>
     
