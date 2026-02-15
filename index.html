@@ -406,161 +406,167 @@
         }
         
         async function generateShareImage(cardId, title, lie, reality, sources) {
-            // Optimized portrait: 1080x1600 (compact & professional)
+            // Premium compact: 1080x1380 (zero waste, Airbnb-style)
             const canvas = document.createElement('canvas');
             canvas.width = 1080;
-            canvas.height = 1600;
+            canvas.height = 1380;
             
             const ctx = canvas.getContext('2d');
             
-            // ===== FUNDO PREMIUM =====
+            // ===== BACKGROUND =====
             const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             bgGradient.addColorStop(0, '#004d1a');
-            bgGradient.addColorStop(0.4, '#009C3B');
-            bgGradient.addColorStop(1, '#001a0a');
+            bgGradient.addColorStop(0.35, '#009C3B');
+            bgGradient.addColorStop(1, '#002d14');
             ctx.fillStyle = bgGradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Padrão geométrico sutil
-            ctx.strokeStyle = 'rgba(252, 209, 22, 0.03)';
-            ctx.lineWidth = 1;
-            for (let i = -canvas.height; i < canvas.width; i += 40) {
+            // Subtle pattern
+            ctx.strokeStyle = 'rgba(252, 209, 22, 0.02)';
+            ctx.lineWidth = 0.8;
+            for (let i = -canvas.height; i < canvas.width; i += 50) {
                 ctx.beginPath();
                 ctx.moveTo(i, 0);
                 ctx.lineTo(i + canvas.height, canvas.height);
                 ctx.stroke();
             }
             
-            // ===== COMPACT HEADER =====
-            // Logo + branding (smaller, tighter)
-            const logoSize = 48;
-            const logoX = canvas.width / 2 - logoSize / 2;
-            let yPos = 30;
+            // ===== MINIMAL HEADER (left-aligned logo) =====
+            const logoSize = 32;
+            const logoX = 40;
+            let yPos = 35;
             
-            // Shield logo
+            // Small shield logo (left side)
             ctx.fillStyle = '#FCD116';
             ctx.beginPath();
-            ctx.moveTo(logoX + logoSize / 2, yPos + 12);
-            ctx.lineTo(logoX + logoSize, yPos + 24);
-            ctx.lineTo(logoX + logoSize, yPos + 36);
-            ctx.quadraticCurveTo(logoX + logoSize / 2, yPos + 52, logoX + logoSize / 2, yPos + 52);
-            ctx.quadraticCurveTo(logoX, yPos + 52, logoX, yPos + 36);
-            ctx.lineTo(logoX, yPos + 24);
-            ctx.lineTo(logoX + logoSize / 2, yPos + 12);
+            ctx.moveTo(logoX + logoSize / 2, yPos);
+            ctx.lineTo(logoX + logoSize, yPos + 14);
+            ctx.lineTo(logoX + logoSize, yPos + 22);
+            ctx.quadraticCurveTo(logoX + logoSize / 2, yPos + 34, logoX + logoSize / 2, yPos + 34);
+            ctx.quadraticCurveTo(logoX, yPos + 34, logoX, yPos + 22);
+            ctx.lineTo(logoX, yPos + 14);
+            ctx.lineTo(logoX + logoSize / 2, yPos);
             ctx.fill();
             
             // Checkmark
             ctx.strokeStyle = '#009C3B';
-            ctx.lineWidth = 2.5;
+            ctx.lineWidth = 1.8;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             ctx.beginPath();
-            ctx.moveTo(logoX + 12, yPos + 36);
-            ctx.lineTo(logoX + 22, yPos + 44);
-            ctx.lineTo(logoX + 38, yPos + 28);
+            ctx.moveTo(logoX + 8, yPos + 22);
+            ctx.lineTo(logoX + 15, yPos + 27);
+            ctx.lineTo(logoX + 26, yPos + 16);
             ctx.stroke();
             
-            // Branding text (tight)
+            // "MENTIRÓMETRO" text (small, left-aligned, next to logo)
             ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 16px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('MENTIRÓMETRO', canvas.width / 2, yPos + logoSize + 18);
-            
-            // ===== MAIN QUESTION =====
-            yPos += logoSize + 45;
-            ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 48px Inter, sans-serif';
-            const titleLines = wrapText(ctx, title, canvas.width - 60, 48);
-            titleLines.forEach(line => {
-                ctx.fillText(line, canvas.width / 2, yPos);
-                yPos += 58;
-            });
-            
-            // ===== SECTION 1: MENTIRA =====
-            yPos += 35;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(60, yPos);
-            ctx.lineTo(canvas.width - 60, yPos);
-            ctx.stroke();
-            
-            ctx.fillStyle = '#FF6B6B';
-            ctx.font = '700 20px Inter, sans-serif';
+            ctx.font = '700 12px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('❌ O QUE FOI DITO', 60, yPos + 42);
+            ctx.fillText('MENTIRÓMETRO', logoX + logoSize + 15, yPos + 22);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = 'italic 22px Inter, sans-serif';
-            const lieLines = wrapText(ctx, `"${lie}"`, canvas.width - 120, 22);
-            let lieY = yPos + 85;
-            lieLines.slice(0, 3).forEach(line => {
-                ctx.fillText(line, 80, lieY);
-                lieY += 36;
+            // ===== MAIN TITLE (full width, bold, attention-grabbing) =====
+            yPos = 85;
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 56px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            const titleLines = wrapText(ctx, title, canvas.width - 40, 56);
+            let titleBottom = yPos;
+            titleLines.forEach(line => {
+                ctx.fillText(line, canvas.width / 2, titleBottom);
+                titleBottom += 65;
+            });
+            yPos = titleBottom + 15;
+            
+            // ===== CARD 1: MENTIRA =====
+            const cardX = 30;
+            const cardW = canvas.width - 60;
+            const cardH = 120;
+            const cardRadius = 12;
+            
+            // Card background (semi-transparent white)
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.strokeStyle = 'rgba(252, 209, 22, 0.2)';
+            ctx.lineWidth = 1;
+            roundRect(ctx, cardX, yPos, cardW, cardH, cardRadius);
+            ctx.fill();
+            ctx.stroke();
+            
+            // Label
+            ctx.fillStyle = '#FF6B6B';
+            ctx.font = '700 18px Inter, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('❌ O QUE FOI DITO', cardX + 20, yPos + 28);
+            
+            // Content (italic, quote-style)
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            ctx.font = 'italic 20px Inter, sans-serif';
+            const lieLines = wrapText(ctx, `"${lie}"`, cardW - 40, 20);
+            let lieY = yPos + 62;
+            lieLines.slice(0, 2).forEach(line => {
+                ctx.fillText(line, cardX + 20, lieY);
+                lieY += 32;
             });
             
-            // ===== SECTION 2: REALIDADE =====
-            yPos = lieY + 30;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(60, yPos);
-            ctx.lineTo(canvas.width - 60, yPos);
+            yPos += cardH + 18;
+            
+            // ===== CARD 2: REALIDADE =====
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.strokeStyle = 'rgba(82, 196, 26, 0.2)';
+            ctx.lineWidth = 1;
+            roundRect(ctx, cardX, yPos, cardW, 140, cardRadius);
+            ctx.fill();
             ctx.stroke();
             
             ctx.fillStyle = '#52C41A';
-            ctx.font = '700 20px Inter, sans-serif';
+            ctx.font = '700 18px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('✓ REALIDADE', 60, yPos + 42);
+            ctx.fillText('✓ REALIDADE', cardX + 20, yPos + 28);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.font = '24px Inter, sans-serif';
-            const realityLines = wrapText(ctx, reality, canvas.width - 120, 24);
-            let realityY = yPos + 85;
-            realityLines.slice(0, 4).forEach(line => {
-                ctx.fillText(line, 80, realityY);
-                realityY += 40;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
+            ctx.font = '600 22px Inter, sans-serif';
+            const realityLines = wrapText(ctx, reality, cardW - 40, 22);
+            let realityY = yPos + 68;
+            realityLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, cardX + 20, realityY);
+                realityY += 35;
             });
             
-            // ===== SECTION 3: FONTES =====
-            yPos = realityY + 25;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(60, yPos);
-            ctx.lineTo(canvas.width - 60, yPos);
+            yPos += 140 + 18;
+            
+            // ===== CARD 3: FONTES =====
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.strokeStyle = 'rgba(24, 144, 255, 0.2)';
+            ctx.lineWidth = 1;
+            roundRect(ctx, cardX, yPos, cardW, 105, cardRadius);
+            ctx.fill();
             ctx.stroke();
             
             ctx.fillStyle = '#1890FF';
-            ctx.font = '700 20px Inter, sans-serif';
+            ctx.font = '700 18px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('📚 FONTES', 60, yPos + 42);
+            ctx.fillText('📚 FONTES VERIFICADAS', cardX + 20, yPos + 28);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = '600 23px Inter, sans-serif';
-            const sourcesLines = wrapText(ctx, sources, canvas.width - 120, 23);
-            let sourcesY = yPos + 85;
-            sourcesLines.slice(0, 3).forEach(line => {
-                ctx.fillText(line, 80, sourcesY);
-                sourcesY += 38;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+            ctx.font = '600 21px Inter, sans-serif';
+            const sourcesLines = wrapText(ctx, sources, cardW - 40, 21);
+            let sourcesY = yPos + 65;
+            sourcesLines.slice(0, 2).forEach(line => {
+                ctx.fillText(line, cardX + 20, sourcesY);
+                sourcesY += 32;
             });
             
-            // ===== FOOTER (compact) =====
-            ctx.strokeStyle = 'rgba(252, 209, 22, 0.6)';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(60, 1530);
-            ctx.lineTo(canvas.width - 60, 1530);
-            ctx.stroke();
+            // ===== FOOTER =====
+            yPos += 105 + 20;
             
             ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = '700 22px Inter, sans-serif';
+            ctx.font = '600 20px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1570);
+            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, yPos + 20);
             
             ctx.fillStyle = '#FCD116';
-            ctx.font = '500 18px Inter, sans-serif';
-            ctx.fillText('Compartilhe a verdade', canvas.width / 2, 1595);
+            ctx.font = '500 16px Inter, sans-serif';
+            ctx.fillText('Compartilhe a verdade', canvas.width / 2, yPos + 52);
             
             // Open image in new tab for saving to albums
             canvas.toBlob(function(blob) {
