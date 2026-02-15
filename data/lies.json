@@ -1,0 +1,83 @@
+{
+  "lies": [
+    {
+      "id": 1,
+      "category": "FALSO",
+      "date": "Dez 2025",
+      "title": "\"Vou ser Bolsonaro moderado, diferente do meu pai\"",
+      "quote": "\"Sou um Bolsonaro diferente, mais moderado, vou conversar com o mercado\"",
+      "reality": "Flávio diz em campanha que vai ser \"moderado\", mas: (1) defende exatamente as mesmas políticas do pai; (2) sua campanha é financiada pelo eleitorado bolsonarista hardcore; (3) o lema é \"em nome do pai\"; (4) promete libertar Bolsonaro se eleito. A \"moderação\" é cosmética.",
+      "sources": ["Folha de S.Paulo", "Bloomberg"]
+    },
+    {
+      "id": 2,
+      "category": "HIPOCRISIA",
+      "date": "Jan 2026",
+      "title": "\"Meu pai foi preso injustamente pela ditadura do STF\"",
+      "quote": "\"Não há democracia enquanto meu pai estiver preso. O STF é um poder executivo disfarçado\"",
+      "reality": "Jair Bolsonaro foi condenado por órgãos JUDICIAIS (não executivos) por tentar um golpe — não foi \"injustiça do STF\". Flávio repete a narrativa de perseguição sem reconhecer que há decisões de múltiplas instâncias.",
+      "sources": ["TSE", "STF"]
+    },
+    {
+      "id": 3,
+      "category": "ENGANADOR",
+      "date": "Dez 2025",
+      "title": "\"Lula privatizou menos que Bolsonaro\"",
+      "quote": "\"O PT vira esquerdista quando precisa, liberal quando precisa. Bolsonaro foi mais liberalizante\"",
+      "reality": "Bolsonaro privatizou NENHUMA empresa estatal significativa em 4 anos. Lula já privatizou Eletrobras e ferrovia MRS. Flávio inverte a realidade.",
+      "sources": ["BNDES", "Folha"]
+    },
+    {
+      "id": 4,
+      "category": "FALSO",
+      "date": "Nov 2025",
+      "title": "\"Economia cresceu 3% ao ano sob Bolsonaro\"",
+      "quote": "\"Durante nosso governo tivemos crescimento consistente. Saímos da crise\"",
+      "reality": "IBGE: crescimento médio Bolsonaro foi 1,3% ao ano. O crescimento de 2021 foi 4,6% (pós-Covid rebound); 2022 foi 2% e 2023 foi 2,9%.",
+      "sources": ["IBGE"]
+    },
+    {
+      "id": 5,
+      "category": "ENGANADOR",
+      "date": "Out 2025",
+      "title": "\"Bolsonaro criou milhões de empregos formais\"",
+      "quote": "\"Geramos mais de 4 milhões de postos formais. Ninguém fez tanto\"",
+      "reality": "CAGED: Bolsonaro saldo +1.1 milhão líquido (2019-2022). Lula gerou +3,2 milhões em período equivalente.",
+      "sources": ["CAGED", "IBGE"]
+    }
+  ],
+  "contradictions": [
+    {
+      "id": 1,
+      "title": "\"Sou diferente do meu pai, mais moderado\" vs. \"Vou libertar meu pai e reformar o STF\"",
+      "explanation": "Se é 'diferente', por que promete fazer exatamente o que o pai faria? Se é 'moderado', por que campanha se chama 'em nome do pai'?"
+    },
+    {
+      "id": 2,
+      "title": "\"Odeio ideologia, quero pragmatismo\" vs. Alimenta \"guerra cultural\"",
+      "explanation": "Define-se como pragmático, mas sua base política é exatamente ideológica (identitária, contra-progressista)."
+    }
+  ],
+  "scandals": [
+    {
+      "id": 1,
+      "title": "Investigação 'Rachadinha' (Corrupção no RJ)",
+      "description": "Flávio foi investigado por possível esquema de 'rachadinha' durante seu governo no RJ. O caso foi anulado por Sergio Moro ter sido juiz parcial."
+    },
+    {
+      "id": 2,
+      "title": "Pressões da Família Bolsonaro",
+      "description": "Candidatura de Flávio é vista como candidatura do pai via procuração. Jair ainda controla a base, dita posições."
+    },
+    {
+      "id": 3,
+      "title": "Rejeição Alta no Mercado",
+      "description": "Mercado financeiro prefere Tarcísio (SP) a Flávio. Banqueiros reconhecem competência de Tarcísio; de Flávio, veem 'risco Bolsonaro'."
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-02-15T10:50:00Z",
+    "source": "Polígrafo, IBGE, CAGED, Folha, Bloomberg",
+    "version": "1.0.0"
+  }
+}

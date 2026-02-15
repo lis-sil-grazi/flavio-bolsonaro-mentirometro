@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentirómetro Flávio Bolsonaro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0e27;
+            color: #e0e6ed;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2d2e5f 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff4444;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #ff4444;
+        }
+        
+        header .tagline {
+            font-size: 1.2em;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        .stat-box {
+            background: rgba(255, 68, 68, 0.1);
+            border: 2px solid #ff4444;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff4444;
+        }
+        
+        .stat-label {
+            color: #888;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .quote {
+            background: rgba(100, 100, 150, 0.2);
+            border-left: 4px solid #ff4444;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 800px;
+            font-size: 1.1em;
+            font-style: italic;
+            color: #ccc;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            color: #ff4444;
+            border-bottom: 2px solid #ff4444;
+            padding-bottom: 10px;
+        }
+        
+        .lie-card {
+            background: rgba(255, 68, 68, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .lie-card:hover {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+        
+        .lie-card .category {
+            display: inline-block;
+            background: #ff4444;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .lie-card .date {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .lie-card h3 {
+            font-size: 1.3em;
+            margin: 15px 0;
+            color: #fff;
+        }
+        
+        .lie-card .quote-text {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #ff4444;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #ccc;
+        }
+        
+        .lie-card .reality {
+            background: rgba(100, 200, 100, 0.1);
+            border-left: 3px solid #66cc66;
+            padding: 15px;
+            margin-top: 15px;
+            color: #ccc;
+        }
+        
+        .lie-card .reality::before {
+            content: "✓ REALIDADE: ";
+            color: #66cc66;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #1a1f3a;
+            border-top: 2px solid #ff4444;
+            padding: 30px;
+            text-align: center;
+            color: #888;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔥 Mentirómetro Flávio</h1>
+        <p class="tagline">Fact-Check de Flávio Bolsonaro para a Presidência 2026</p>
+        <p class="tagline" style="margin-top: 20px; font-size: 0.9em;">Candidato sabichão, fatos nem tanto</p>
+    </header>
+    
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Mentiras Desmascaradas</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Contradições Flagrantes</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Escândalos Documentados</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Pedidos de Desculpa</div>
+        </div>
+    </div>
+    
+    <div class="quote">
+        "Sou moderado, não sou como meu pai, vou salvar o Brasil com economia"
+        — Flávio Bolsonaro, 2025
+        <br><br>
+        <em style="color: #888;">(Enquanto toca campanha "em nome do pai" e defende o mesmo que Bolsonaro defendia)</em>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">🔥 Mentiras Desmascaradas</h2>
+        
+        <div class="lie-card">
+            <span class="category">FALSO</span>
+            <span class="date">Dez 2025</span>
+            <h3>"Vou ser Bolsonaro moderado, diferente do meu pai"</h3>
+            <div class="quote-text">"Sou um Bolsonaro diferente, mais moderado, vou conversar com o mercado"</div>
+            <div class="reality">
+                Flávio diz em campanha que vai ser "moderado", mas: (1) defende exatamente as mesmas políticas do pai; (2) sua campanha é financiada pelo eleitorado bolsonarista hardcore; (3) o lema é "em nome do pai"; (4) promete libertar Bolsonaro se eleito. A "moderação" é cosmética.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">HIPOCRISIA</span>
+            <span class="date">Jan 2026</span>
+            <h3>"Meu pai foi preso injustamente pela ditadura do STF"</h3>
+            <div class="quote-text">"Não há democracia enquanto meu pai estiver preso. O STF é um poder executivo disfarçado"</div>
+            <div class="reality">
+                Jair Bolsonaro foi condenado por órgãos JUDICIAIS (não executivos) por tentar um golpe — não foi "injustiça do STF". Flávio repete a narrativa de perseguição sem reconhecer que há decisões de múltiplas instâncias. Quer reformar o STF para liberar o pai, não por justiça, mas por interesse pessoal.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">ENGANADOR</span>
+            <span class="date">Dez 2025</span>
+            <h3>"Lula privatizou menos que Bolsonaro"</h3>
+            <div class="quote-text">"O PT vira esquerdista quando precisa, liberal quando precisa. Bolsonaro foi mais liberalizante"</div>
+            <div class="reality">
+                Dado: Bolsonaro privatizou NENHUMA empresa estatal significativa em 4 anos. Lula já privatizou Eletrobras e ferrovia MRS. Flávio inverte a realidade porque precisa criticar Lula, mas não tem dados que sustentem sua posição. A estratégia é "xingar Lula primeiro, fatos depois".
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">FALSO</span>
+            <span class="date">Nov 2025</span>
+            <h3>"Economia cresceu 3% ao ano sob Bolsonaro"</h3>
+            <div class="quote-text">"Durante nosso governo tivemos crescimento consistente. Saímos da crise"</div>
+            <div class="reality">
+                IBGE: crescimento médio Bolsonaro foi 1,3% ao ano — pior que Lula (2,5%), Dilma (1,9%) e até FHC (2,3%). O crescimento de 2021 foi 4,6% (pós-Covid, rebound); 2022 foi 2% e 2023 (fim mandato) foi 2,9%. A narrativa de "saiu da crise" ignora que a crise econômica persistiu.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">ENGANADOR</span>
+            <span class="date">Out 2025</span>
+            <h3>"Bolsonaro criou milhões de empregos formais"</h3>
+            <div class="quote-text">"Geramos mais de 4 milhões de postos formais. Ninguém fez tanto"</div>
+            <div class="reality">
+                CAGED: Bolsonaro saldo +1.1 milhão líquido (2019-2022), em período de rebound pós-Covid. Lula gerou +3,2 milhões em período equivalente (2003-2006). Flávio conta apenas os números positivos e ignora que herança era pós-pandemia, quando qualquer governo cria empregos por recuperação natural.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">FALSO</span>
+            <span class="date">Set 2025</span>
+            <h3>"Inflação caiu porque Bolsonaro controlou gastos"</h3>
+            <div class="quote-text">"O governo Bolsonaro controlou a inflação com responsabilidade fiscal"</div>
+            <div class="reality">
+                Inflação: fim Temer (2018) = 3,75%, fim Bolsonaro (2022) = 5,8%. Lula herdou a crise inflacionária deixada pelo governo Bolsonaro. A redução inflacionária recente é mérito de Lula + Banco Central de Campos Neto (continuado de Bolsonaro). Flávio toma crédito por queda que não fez.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">HIPOCRISIA</span>
+            <span class="date">Dez 2025</span>
+            <h3>"Vou combater a corrupção"</h3>
+            <div class="quote-text">"Sou senador há 6 anos, nunca me envolverei com corrupção, vou ter zero tolerância"</div>
+            <div class="reality">
+                Flávio está envolvido na acusação de "rachadinha" (esquema de corrupção no governo do RJ) — pago para investigação por Sergio Moro (juiz parcial, depois justiceiro). Embora investigações apontassem indícios, o caso foi anulado. Não é exatamente "clean". Suas promessas anti-corrupção soam vazias dado o histórico.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <span class="category">CONTRADIÇÃO</span>
+            <span class="date">Jan 2026</span>
+            <h3>"Vou ser mais diálogo, menos briga"</h3>
+            <div class="quote-text">"Serei um presidente que dialoga com todos. Nada de guerra cultural"</div>
+            <div class="reality">
+                Flávio amplifica narrativas de "ditadura do STF", chama Lula de "ladrão", repete "ideologia de gênero". Seu discurso continua polarizado. A "moderação" é teatro — ele fala bonito para banqueiros, mas sua base continua absorvendo o mesmo discurso inflamado do bolsonarismo.
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">🔄 Contradições Flagrantes</h2>
+        
+        <div class="lie-card">
+            <h3>🗣️ "Sou diferente do meu pai, mais moderado" (2025)</h3>
+            <h3 style="color: #ff8888; margin-top: 20px;">VS</h3>
+            <h3>📜 "Vou libertar meu pai e reformar o STF" (idem 2025)</h3>
+            <div class="reality">
+                Se é "diferente", por que promete fazer exatamente o que o pai faria? Se é "moderado", por que campanha se chama "em nome do pai"? A narrativa desmorona sozinha.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <h3>🗣️ "Odeio ideologia, quero pragmatismo" (2025)</h3>
+            <h3 style="color: #ff8888; margin-top: 20px;">VS</h3>
+            <h3>📰 Alimenta "guerra cultural" contra progressistas (histórico)</h3>
+            <div class="reality">
+                Define-se como pragmático, mas sua base política é exatamente ideológica (identitária, contra-progressista). Flávio surfa na onda de identidade bolsonarista enquanto tenta vender "pragmatismo" para o mercado.
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">💣 Escândalos</h2>
+        
+        <div class="lie-card">
+            <h3>Investigação "Rachadinha" (Corrupção no RJ)</h3>
+            <div class="reality">
+                Flávio foi investigado por possível esquema de "rachadinha" (desvio de salários de funcionários) durante seu governo no RJ. O caso foi anulado por Sergio Moro ter sido juiz parcial. Embora tenha escapado tecnicamente, a acusação de corrupção marca sua trajetória.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <h3>Pressões da Família Bolsonaro</h3>
+            <div class="reality">
+                Candidatura de Flávio é vista como candidatura do pai via procuração. Jair ainda controla a base, dita posições, influencia alianças. Flávio não tem autonomia política real — é um fantoche presidencial.
+            </div>
+        </div>
+        
+        <div class="lie-card">
+            <h3>Rejeição Alta no Mercado</h3>
+            <div class="reality">
+                Mercado financeiro prefere Tarcísio (SP) a Flávio. Banqueiros reconhecem competência de Tarcísio; de Flávio, veem "risco Bolsonaro". Sua campanha tenta se "vender" para banqueiros, mas não consegue confiança.
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p><strong>Mentirómetro Flávio Bolsonaro</strong> — Fact-checking para cidadania informada 🇧🇷</p>
+        <p style="margin-top: 15px; font-size: 0.9em;">Todas as informações aqui são baseadas em verificações de órgãos como IBGE, CAGED, Polígrafo e cobertura jornalística.</p>
+        <p style="margin-top: 10px; font-size: 0.85em;">Atualizado: Fevereiro 2026</p>
+    </footer>
+</body>
+</html>
