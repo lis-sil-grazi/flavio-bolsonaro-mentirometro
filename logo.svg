@@ -1,0 +1,23 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FCD116" stroke="#009C3B" stroke-width="3"/>
+  
+  <!-- Inner green circle -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#009C3B" stroke-width="2"/>
+  
+  <!-- Letter M in green -->
+  <text x="70" y="125" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#009C3B">M</text>
+  
+  <!-- Letter F in yellow with green outline -->
+  <text x="115" y="125" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#FCD116" stroke="#009C3B" stroke-width="1">F</text>
+  
+  <!-- Decorative check mark (truth indicator) -->
+  <g transform="translate(100, 50)">
+    <!-- Check mark in green -->
+    <path d="M -12 5 L -3 12 L 12 -8" stroke="#009C3B" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Small yellow accent dots -->
+  <circle cx="30" cy="100" r="5" fill="#FCD116" opacity="0.8"/>
+  <circle cx="170" cy="100" r="5" fill="#FCD116" opacity="0.8"/>
+</svg>
