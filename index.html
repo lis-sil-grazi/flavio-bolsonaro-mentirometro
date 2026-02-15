@@ -368,81 +368,135 @@
         }
         
         async function generateShareImage(cardId, title, reality) {
-            // Criar canvas temporário com design profissional
+            // Instagram Story size: 1080x1920 (portrait)
             const canvas = document.createElement('canvas');
-            canvas.width = 1200;
-            canvas.height = 630;
+            canvas.width = 1080;
+            canvas.height = 1920;
             
             const ctx = canvas.getContext('2d');
             
-            // Fundo gradiente (cores Brasil)
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            // Fundo gradiente premium (verde Brasil)
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
             gradient.addColorStop(0, '#009C3B');
-            gradient.addColorStop(1, '#007a2e');
+            gradient.addColorStop(0.5, '#008a32');
+            gradient.addColorStop(1, '#006b27');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Logo/Título
+            // Accent line top
             ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 28px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('🚨 MENTIRÓMETRO FLÁVIO', canvas.width / 2, 50);
+            ctx.fillRect(0, 0, canvas.width, 8);
             
-            // Separador
-            ctx.strokeStyle = '#FCD116';
+            // Header: Logo + Título
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 48px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('MENTIRÓMETRO', canvas.width / 2, 120);
+            
+            ctx.font = 'bold 36px Inter, sans-serif';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillText('FLÁVIO', canvas.width / 2, 170);
+            
+            // Separador elegante
+            ctx.strokeStyle = 'rgba(252, 209, 22, 0.4)';
             ctx.lineWidth = 2;
+            ctx.setLineDash([20, 10]);
             ctx.beginPath();
-            ctx.moveTo(100, 70);
-            ctx.lineTo(canvas.width - 100, 70);
+            ctx.moveTo(100, 200);
+            ctx.lineTo(canvas.width - 100, 200);
             ctx.stroke();
+            ctx.setLineDash([]);
             
-            // Título da mentira (com quebra de linha se necessário)
+            // Main content box (semi-transparent white)
+            const boxX = 60;
+            const boxY = 240;
+            const boxW = canvas.width - 120;
+            const boxH = 1200;
+            
+            // Box shadow simulado
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            ctx.borderRadius = 20;
+            roundRect(ctx, boxX + 4, boxY + 4, boxW, boxH, 20);
+            ctx.fill();
+            
+            // Main box branco
             ctx.fillStyle = '#FFFFFF';
-            ctx.font = 'bold 32px Inter, sans-serif';
+            roundRect(ctx, boxX, boxY, boxW, boxH, 20);
+            ctx.fill();
+            
+            // Title inside box
+            ctx.fillStyle = '#009C3B';
+            ctx.font = 'bold 44px Inter, sans-serif';
             ctx.textAlign = 'center';
-            const titleLines = wrapText(ctx, title, canvas.width - 80, 32);
-            let yPos = 120;
+            const titleLines = wrapText(ctx, title, boxW - 60, 44);
+            let yPos = boxY + 80;
             titleLines.forEach(line => {
                 ctx.fillText(line, canvas.width / 2, yPos);
-                yPos += 40;
+                yPos += 60;
             });
             
-            // Box da realidade
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.fillRect(40, yPos + 20, canvas.width - 80, 180);
+            // Separator
+            ctx.strokeStyle = 'rgba(0, 156, 59, 0.2)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(boxX + 40, yPos + 20);
+            ctx.lineTo(boxX + boxW - 40, yPos + 20);
+            ctx.stroke();
             
-            // Texto da realidade
+            // Reality label
             ctx.fillStyle = '#009C3B';
-            ctx.font = 'bold 16px Inter, sans-serif';
+            ctx.font = 'bold 24px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('✓ REALIDADE:', 60, yPos + 45);
+            ctx.fillText('✓ REALIDADE', boxX + 50, yPos + 80);
             
+            // Reality text
             ctx.fillStyle = '#1a1a1a';
-            ctx.font = '14px Inter, sans-serif';
-            const realityLines = wrapText(ctx, reality, canvas.width - 120, 14);
-            let realityY = yPos + 70;
-            realityLines.slice(0, 4).forEach(line => {
-                ctx.fillText(line, 60, realityY);
-                realityY += 22;
+            ctx.font = '28px Inter, sans-serif';
+            const realityLines = wrapText(ctx, reality, boxW - 100, 28);
+            let realityY = yPos + 140;
+            realityLines.slice(0, 6).forEach((line, idx) => {
+                if (idx < 6) {
+                    ctx.fillText(line, boxX + 50, realityY);
+                    realityY += 45;
+                }
             });
             
-            // Footer
-            ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 16px Inter, sans-serif';
+            // Footer with URL
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = 'bold 28px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('Confira mais em: mentirómetro.flávio.com.br', canvas.width / 2, 600);
+            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1820);
             
-            // Converter pra imagem e fazer download
+            ctx.fillStyle = 'rgba(252, 209, 22, 0.8)';
+            ctx.font = '20px Inter, sans-serif';
+            ctx.fillText('Compartilhe a verdade', canvas.width / 2, 1870);
+            
+            // Download
             canvas.toBlob(function(blob) {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `mentirometro-flavio-${Date.now()}.png`;
+                a.download = `mentirometro-${title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}-${Date.now()}.png`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
             });
+        }
+        
+        // Helper function para rounded rectangles
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
         }
         
         function wrapText(ctx, text, maxWidth, lineHeight) {
