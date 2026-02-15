@@ -406,10 +406,10 @@
         }
         
         async function generateShareImage(cardId, title, lie, reality, sources) {
-            // Extended portrait: 1080x2400 (full story + more)
+            // Optimized portrait: 1080x1600 (compact & professional)
             const canvas = document.createElement('canvas');
             canvas.width = 1080;
-            canvas.height = 2400;
+            canvas.height = 1600;
             
             const ctx = canvas.getContext('2d');
             
@@ -431,137 +431,136 @@
                 ctx.stroke();
             }
             
-            // ===== LOGO + HEADER =====
-            // Draw shield logo with checkmark
-            const logoSize = 60;
+            // ===== COMPACT HEADER =====
+            // Logo + branding (smaller, tighter)
+            const logoSize = 48;
             const logoX = canvas.width / 2 - logoSize / 2;
-            const logoY = 40;
+            let yPos = 30;
             
-            // Shield shape
+            // Shield logo
             ctx.fillStyle = '#FCD116';
             ctx.beginPath();
-            ctx.moveTo(logoX + logoSize / 2, logoY + 15);
-            ctx.lineTo(logoX + logoSize, logoY + 30);
-            ctx.lineTo(logoX + logoSize, logoY + 45);
-            ctx.quadraticCurveTo(logoX + logoSize / 2, logoY + 65, logoX + logoSize / 2, logoY + 65);
-            ctx.quadraticCurveTo(logoX, logoY + 65, logoX, logoY + 45);
-            ctx.lineTo(logoX, logoY + 30);
-            ctx.lineTo(logoX + logoSize / 2, logoY + 15);
+            ctx.moveTo(logoX + logoSize / 2, yPos + 12);
+            ctx.lineTo(logoX + logoSize, yPos + 24);
+            ctx.lineTo(logoX + logoSize, yPos + 36);
+            ctx.quadraticCurveTo(logoX + logoSize / 2, yPos + 52, logoX + logoSize / 2, yPos + 52);
+            ctx.quadraticCurveTo(logoX, yPos + 52, logoX, yPos + 36);
+            ctx.lineTo(logoX, yPos + 24);
+            ctx.lineTo(logoX + logoSize / 2, yPos + 12);
             ctx.fill();
             
-            // Checkmark inside shield
+            // Checkmark
             ctx.strokeStyle = '#009C3B';
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 2.5;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             ctx.beginPath();
-            ctx.moveTo(logoX + 15, logoY + 45);
-            ctx.lineTo(logoX + 27, logoY + 55);
-            ctx.lineTo(logoX + 47, logoY + 35);
+            ctx.moveTo(logoX + 12, yPos + 36);
+            ctx.lineTo(logoX + 22, yPos + 44);
+            ctx.lineTo(logoX + 38, yPos + 28);
             ctx.stroke();
             
-            // Title text
-            ctx.fillStyle = 'rgba(252, 209, 22, 0.9)';
-            ctx.font = '600 18px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('MENTIRÓMETRO FLÁVIO', canvas.width / 2, logoY + logoSize + 35);
-            
-            // ===== MAIN QUESTION TITLE =====
-            let yPos = logoY + logoSize + 90;
+            // Branding text (tight)
             ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 52px Inter, sans-serif';
-            const titleLines = wrapText(ctx, title, canvas.width - 80, 52);
+            ctx.font = 'bold 16px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('MENTIRÓMETRO', canvas.width / 2, yPos + logoSize + 18);
+            
+            // ===== MAIN QUESTION =====
+            yPos += logoSize + 45;
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 48px Inter, sans-serif';
+            const titleLines = wrapText(ctx, title, canvas.width - 60, 48);
             titleLines.forEach(line => {
                 ctx.fillText(line, canvas.width / 2, yPos);
-                yPos += 65;
+                yPos += 58;
             });
             
-            // ===== SECTION 1: O QUE FOI DITO (MENTIRA) =====
-            yPos += 60;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-            ctx.lineWidth = 2;
+            // ===== SECTION 1: MENTIRA =====
+            yPos += 35;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.lineWidth = 1.5;
             ctx.beginPath();
-            ctx.moveTo(80, yPos);
-            ctx.lineTo(canvas.width - 80, yPos);
+            ctx.moveTo(60, yPos);
+            ctx.lineTo(canvas.width - 60, yPos);
             ctx.stroke();
             
             ctx.fillStyle = '#FF6B6B';
-            ctx.font = '600 22px Inter, sans-serif';
+            ctx.font = '700 20px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('❌ O QUE FOI DITO', 80, yPos + 55);
+            ctx.fillText('❌ O QUE FOI DITO', 60, yPos + 42);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = 'italic 24px Inter, sans-serif';
-            const lieLines = wrapText(ctx, `"${lie}"`, canvas.width - 160, 24);
-            let lieY = yPos + 110;
-            lieLines.slice(0, 4).forEach(line => {
-                ctx.fillText(line, 100, lieY);
-                lieY += 45;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = 'italic 22px Inter, sans-serif';
+            const lieLines = wrapText(ctx, `"${lie}"`, canvas.width - 120, 22);
+            let lieY = yPos + 85;
+            lieLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, 80, lieY);
+                lieY += 36;
             });
             
             // ===== SECTION 2: REALIDADE =====
-            yPos = lieY + 50;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-            ctx.lineWidth = 2;
+            yPos = lieY + 30;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.lineWidth = 1.5;
             ctx.beginPath();
-            ctx.moveTo(80, yPos);
-            ctx.lineTo(canvas.width - 80, yPos);
+            ctx.moveTo(60, yPos);
+            ctx.lineTo(canvas.width - 60, yPos);
             ctx.stroke();
             
             ctx.fillStyle = '#52C41A';
-            ctx.font = '600 22px Inter, sans-serif';
+            ctx.font = '700 20px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('✓ REALIDADE', 80, yPos + 55);
+            ctx.fillText('✓ REALIDADE', 60, yPos + 42);
             
             ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.font = '26px Inter, sans-serif';
-            const realityLines = wrapText(ctx, reality, canvas.width - 160, 26);
-            let realityY = yPos + 110;
-            realityLines.slice(0, 5).forEach(line => {
-                ctx.fillText(line, 100, realityY);
-                realityY += 48;
+            ctx.font = '24px Inter, sans-serif';
+            const realityLines = wrapText(ctx, reality, canvas.width - 120, 24);
+            let realityY = yPos + 85;
+            realityLines.slice(0, 4).forEach(line => {
+                ctx.fillText(line, 80, realityY);
+                realityY += 40;
             });
             
             // ===== SECTION 3: FONTES =====
-            yPos = realityY + 50;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-            ctx.lineWidth = 2;
+            yPos = realityY + 25;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.lineWidth = 1.5;
             ctx.beginPath();
-            ctx.moveTo(80, yPos);
-            ctx.lineTo(canvas.width - 80, yPos);
+            ctx.moveTo(60, yPos);
+            ctx.lineTo(canvas.width - 60, yPos);
             ctx.stroke();
             
             ctx.fillStyle = '#1890FF';
-            ctx.font = '600 22px Inter, sans-serif';
+            ctx.font = '700 20px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('📚 FONTES VERIFICADAS', 80, yPos + 55);
+            ctx.fillText('📚 FONTES', 60, yPos + 42);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = '22px Inter, sans-serif';
-            const sourcesLines = wrapText(ctx, sources, canvas.width - 160, 22);
-            let sourcesY = yPos + 110;
-            sourcesLines.slice(0, 4).forEach(line => {
-                ctx.fillText(line, 100, sourcesY);
-                sourcesY += 45;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = '600 23px Inter, sans-serif';
+            const sourcesLines = wrapText(ctx, sources, canvas.width - 120, 23);
+            let sourcesY = yPos + 85;
+            sourcesLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, 80, sourcesY);
+                sourcesY += 38;
             });
             
-            // ===== FOOTER =====
-            yPos = sourcesY + 60;
-            ctx.strokeStyle = 'rgba(252, 209, 22, 0.5)';
-            ctx.lineWidth = 2;
+            // ===== FOOTER (compact) =====
+            ctx.strokeStyle = 'rgba(252, 209, 22, 0.6)';
+            ctx.lineWidth = 1.5;
             ctx.beginPath();
-            ctx.moveTo(80, yPos);
-            ctx.lineTo(canvas.width - 80, yPos);
+            ctx.moveTo(60, 1530);
+            ctx.lineTo(canvas.width - 60, 1530);
             ctx.stroke();
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = '600 26px Inter, sans-serif';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = '700 22px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, yPos + 60);
+            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1570);
             
             ctx.fillStyle = '#FCD116';
-            ctx.font = '500 20px Inter, sans-serif';
-            ctx.fillText('Compartilhe a verdade', canvas.width / 2, yPos + 110);
+            ctx.font = '500 18px Inter, sans-serif';
+            ctx.fillText('Compartilhe a verdade', canvas.width / 2, 1595);
             
             // Open image in new tab for saving to albums
             canvas.toBlob(function(blob) {
