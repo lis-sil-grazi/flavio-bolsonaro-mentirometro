@@ -413,108 +413,143 @@
             
             const ctx = canvas.getContext('2d');
             
-            // ===== SPLIT-SCREEN LAYOUT =====
-            const midpoint = canvas.width / 2;
+            // Branco puro como base
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // LEFT SIDE: Mentira (vermelho escuro)
-            ctx.fillStyle = '#A71930';
-            ctx.fillRect(0, 0, midpoint, canvas.height);
+            // ===== HEADER COM LOGO =====
+            // Logo shield (premium, centered top)
+            const logoSize = 80;
+            const logoX = canvas.width / 2 - logoSize / 2;
+            let yPos = 50;
             
-            // RIGHT SIDE: Verdade (verde Brasil)
-            ctx.fillStyle = '#009C3B';
-            ctx.fillRect(midpoint, 0, midpoint, canvas.height);
-            
-            // ===== DIAGONAL SEPARATOR (premium touch) =====
-            ctx.strokeStyle = '#FCD116';
-            ctx.lineWidth = 8;
+            ctx.fillStyle = '#FCD116';
             ctx.beginPath();
-            ctx.moveTo(0, 200);
-            ctx.lineTo(canvas.width, canvas.height - 200);
+            ctx.moveTo(logoX + logoSize / 2, yPos);
+            ctx.lineTo(logoX + logoSize, yPos + 30);
+            ctx.lineTo(logoX + logoSize, yPos + 50);
+            ctx.quadraticCurveTo(logoX + logoSize / 2, yPos + 90, logoX + logoSize / 2, yPos + 90);
+            ctx.quadraticCurveTo(logoX, yPos + 90, logoX, yPos + 50);
+            ctx.lineTo(logoX, yPos + 30);
+            ctx.lineTo(logoX + logoSize / 2, yPos);
+            ctx.fill();
+            
+            // Checkmark
+            ctx.strokeStyle = '#009C3B';
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(logoX + 20, yPos + 55);
+            ctx.lineTo(logoX + 40, yPos + 70);
+            ctx.lineTo(logoX + 65, yPos + 40);
             ctx.stroke();
             
-            // ===== HEADER UNIFICADO =====
-            ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 48px Inter, sans-serif';
+            yPos += 110;
+            
+            // Branding
+            ctx.fillStyle = '#009C3B';
+            ctx.font = '800 32px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('MENTIRÓMETRO FLÁVIO', canvas.width / 2, 80);
+            ctx.fillText('MENTIRÓMETRO FLÁVIO', canvas.width / 2, yPos);
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.font = '400 20px Inter, sans-serif';
-            ctx.fillText('Fact-Check 2026', canvas.width / 2, 120);
+            yPos += 60;
             
-            // ===== ESQUERDA: O QUE FOI DITO =====
-            const leftX = 40;
-            let yPos = 180;
-            
+            // ===== QUESTÃO TÍTULO (AMARELO BRASIL) =====
             ctx.fillStyle = '#FCD116';
-            ctx.font = '700 28px Inter, sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText('❌', leftX, yPos);
-            ctx.fillText('O QUE FOI DITO', leftX + 50, yPos);
+            ctx.fillRect(0, yPos - 20, canvas.width, 150);
             
-            // Lie quote
-            ctx.fillStyle = '#FFFFFF';
-            ctx.font = '600 32px Inter, sans-serif';
-            yPos += 90;
-            const lieLines = wrapText(ctx, `"${lie}"`, midpoint - 80, 32);
-            lieLines.slice(0, 4).forEach(line => {
-                ctx.fillText(line, leftX, yPos);
-                yPos += 48;
+            ctx.fillStyle = '#1a1a1a';
+            ctx.font = '900 52px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            const titleLines = wrapText(ctx, title, canvas.width - 60, 52);
+            titleLines.forEach(line => {
+                ctx.fillText(line, canvas.width / 2, yPos + 60);
+                yPos += 65;
             });
             
-            // ===== DIREITA: REALIDADE =====
-            const rightX = midpoint + 40;
-            yPos = 180;
+            yPos += 40;
             
-            ctx.fillStyle = '#FCD116';
-            ctx.font = '700 28px Inter, sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText('✓', rightX, yPos);
-            ctx.fillText('REALIDADE', rightX + 50, yPos);
+            // ===== LEFT: MENTIRA (Fundo Branco, Texto Preto) =====
+            const midpoint = canvas.width / 2;
+            const leftPad = 30;
             
-            // Reality text
             ctx.fillStyle = '#FFFFFF';
-            ctx.font = '600 32px Inter, sans-serif';
-            yPos += 90;
-            const realityLines = wrapText(ctx, reality, midpoint - 80, 32);
-            realityLines.slice(0, 4).forEach(line => {
-                ctx.fillText(line, rightX, yPos);
-                yPos += 48;
+            ctx.fillRect(0, yPos, midpoint, 600);
+            
+            // Border esquerda (verde + amarelo)
+            ctx.fillStyle = '#009C3B';
+            ctx.fillRect(0, yPos, 6, 600);
+            
+            ctx.fillStyle = '#FF6B6B';
+            ctx.font = '900 44px Inter, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('❌', leftPad, yPos + 80);
+            ctx.fillText('MENTIRA', leftPad, yPos + 140);
+            
+            ctx.fillStyle = '#1a1a1a';
+            ctx.font = '700 38px Inter, sans-serif';
+            let lieY = yPos + 240;
+            const lieLines = wrapText(ctx, `"${lie}"`, midpoint - 60, 38);
+            lieLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, leftPad, lieY);
+                lieY += 55;
             });
             
-            // ===== BOTTOM: FONTES + FOOTER (full width) =====
-            yPos = 1550;
+            // ===== RIGHT: VERDADE (Fundo Verde Brasil, Texto Branco) =====
+            ctx.fillStyle = '#009C3B';
+            ctx.fillRect(midpoint, yPos, midpoint, 600);
             
-            // Background para fontes
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-            ctx.fillRect(0, yPos - 60, canvas.width, 370);
-            
-            // Titulo fontes
+            // Border direita (amarelo)
             ctx.fillStyle = '#FCD116';
-            ctx.font = '700 26px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('📚 FONTES VERIFICADAS', canvas.width / 2, yPos);
+            ctx.fillRect(canvas.width - 6, yPos, 6, 600);
             
-            // Sources
+            ctx.fillStyle = '#FCD116';
+            ctx.font = '900 44px Inter, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('✓', midpoint + leftPad, yPos + 80);
+            ctx.fillText('VERDADE', midpoint + leftPad, yPos + 140);
+            
             ctx.fillStyle = '#FFFFFF';
-            ctx.font = 'bold 28px Inter, sans-serif';
+            ctx.font = '700 38px Inter, sans-serif';
+            let realityY = yPos + 240;
+            const realityLines = wrapText(ctx, reality, midpoint - 60, 38);
+            realityLines.slice(0, 3).forEach(line => {
+                ctx.fillText(line, midpoint + leftPad, realityY);
+                realityY += 55;
+            });
+            
+            yPos += 640;
+            
+            // ===== FONTES (Branco com fundo verde) =====
+            ctx.fillStyle = '#009C3B';
+            ctx.fillRect(0, yPos, canvas.width, 220);
+            
+            ctx.fillStyle = '#FCD116';
+            ctx.font = '800 32px Inter, sans-serif';
             ctx.textAlign = 'center';
-            const sourcesLines = wrapText(ctx, sources, canvas.width - 100, 28);
-            let sourcesY = yPos + 70;
-            sourcesLines.slice(0, 3).forEach(line => {
+            ctx.fillText('📚 FONTES VERIFICADAS', canvas.width / 2, yPos + 55);
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '700 32px Inter, sans-serif';
+            const sourcesLines = wrapText(ctx, sources, canvas.width - 100, 32);
+            let sourcesY = yPos + 115;
+            sourcesLines.slice(0, 2).forEach(line => {
                 ctx.fillText(line, canvas.width / 2, sourcesY);
                 sourcesY += 50;
             });
             
-            // ===== FINAL FOOTER =====
-            ctx.fillStyle = '#FCD116';
-            ctx.font = '700 24px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1850);
+            // ===== FOOTER =====
+            yPos += 240;
             
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            ctx.font = '500 18px Inter, sans-serif';
-            ctx.fillText('Compartilhe a verdade', canvas.width / 2, 1900);
+            ctx.fillStyle = '#1a1a1a';
+            ctx.font = '800 28px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, yPos + 40);
+            
+            ctx.fillStyle = '#FCD116';
+            ctx.font = '700 22px Inter, sans-serif';
+            ctx.fillText('Compartilhe a verdade', canvas.width / 2, yPos + 90);
             
             // Open image in new tab for saving to albums
             canvas.toBlob(function(blob) {
