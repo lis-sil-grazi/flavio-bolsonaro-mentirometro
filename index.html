@@ -256,8 +256,11 @@
         }
         
         .share-button, .image-button {
+            flex: 1;
+            min-width: 140px;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             padding: 12px 16px;
             border: none;
@@ -525,16 +528,23 @@
             ctx.font = '500 20px Inter, sans-serif';
             ctx.fillText('Compartilhe a verdade', canvas.width / 2, yPos + 110);
             
-            // Download
+            // Open image in new tab for saving to albums
             canvas.toBlob(function(blob) {
                 const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `mentirometro-${title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}-${Date.now()}.png`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+                const img = new Image();
+                img.src = url;
+                
+                // Open in new tab
+                const newTab = window.open();
+                newTab.document.body.appendChild(img);
+                newTab.document.body.style.margin = '0';
+                newTab.document.body.style.padding = '0';
+                newTab.document.body.style.backgroundColor = '#000';
+                newTab.document.body.style.display = 'flex';
+                newTab.document.body.style.alignItems = 'center';
+                newTab.document.body.style.justifyContent = 'center';
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '100vh';
             });
         }
         
