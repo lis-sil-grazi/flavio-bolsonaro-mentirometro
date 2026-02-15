@@ -152,6 +152,26 @@
             font-weight: bold;
         }
         
+        .share-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .share-button:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+        
         footer {
             background: linear-gradient(135deg, #009C3B 0%, #006B3B 100%);
             border-top: 2px solid #006B3B;
@@ -171,6 +191,14 @@
             }
         }
     </style>
+    <script>
+        function shareOnWhatsApp(title, text) {
+            const siteUrl = 'https://lis-sil-grazi.github.io/flavio-bolsonaro-mentirometro/';
+            const message = `📍 *${title}*\n\n${text}\n\n🔗 Confira no Mentirómetro:\n${siteUrl}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -218,6 +246,7 @@
             <div class="reality">
                 Flávio diz em campanha que vai ser "moderado", mas: (1) defende exatamente as mesmas políticas do pai; (2) sua campanha é financiada pelo eleitorado bolsonarista hardcore; (3) o lema é "em nome do pai"; (4) promete libertar Bolsonaro se eleito. A "moderação" é cosmética para agradar banqueiros.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Bolsonaro Moderado?', 'Flávio promete ser moderado mas defende exatamente as mesmas políticas do pai. A moderação é cosmética.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -228,6 +257,7 @@
             <div class="reality">
                 Jair Bolsonaro foi condenado por órgãos JUDICIAIS (não executivos) por tentar um golpe — não foi "injustiça do STF". Flávio repete a narrativa de perseguição sem reconhecer que há decisões de múltiplas instâncias. Quer reformar o STF para liberar o pai, não por justiça, mas por interesse pessoal.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('STF Condenação', 'Bolsonaro foi condenado por órgãos judiciais, não pelo STF. Flávio repete narrativa de perseguição sem base.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -238,6 +268,7 @@
             <div class="reality">
                 IBGE: crescimento médio Bolsonaro foi 1,3% ao ano — pior que Lula (2,5%), Dilma (1,9%) e até FHC (2,3%). O crescimento de 2021 foi 4,6% (pós-Covid rebound); 2022 foi 2% e 2023 (fim mandato) foi 2,9%. A narrativa de "saiu da crise" ignora que a crise econômica persistiu.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Crescimento Econômico', 'Crescimento médio de Bolsonaro foi 1,3% ao ano (IBGE), não 3%. Pior que Lula, Dilma e FHC.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -248,6 +279,7 @@
             <div class="reality">
                 CAGED: Bolsonaro saldo +1.1 milhão líquido (2019-2022), em período de rebound pós-Covid. Lula gerou +3,2 milhões em período equivalente (2003-2006). Flávio conta apenas os números positivos e ignora que herança era pós-pandemia, quando qualquer governo cria empregos por recuperação natural.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Empregos Formais', 'CAGED: Bolsonaro criou 1.1 milhão empregos (rebound). Lula criou 3.2 milhões no mesmo período.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -258,6 +290,7 @@
             <div class="reality">
                 Inflação: fim Temer (2018) = 3,75%, fim Bolsonaro (2022) = 5,8%. Lula herdou a crise inflacionária deixada pelo governo Bolsonaro. A redução inflacionária recente é mérito de Lula + Banco Central de Campos Neto (continuado de Bolsonaro). Flávio toma crédito por queda que não fez.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Inflação', 'Bolsonaro terminou com inflação em 5,8%. A queda recente é mérito de Lula, não dele.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -266,8 +299,9 @@
             <h3>"Vou combater a corrupção"</h3>
             <div class="quote-text">"Sou senador há 6 anos, nunca me envolverei com corrupção, vou ter zero tolerância"</div>
             <div class="reality">
-                Flávio está envolvido na acusação de "rachadinha" (esquema de corrupção no governo do RJ) — pago para investigação por Sergio Moro (juiz parcial, depois justiceiro). Embora investigações apontassem indícios, o caso foi anulado. Não é exatamente "clean". Suas promessas anti-corrupção soam vazias dado o histórico.
+                Flávio está envolvido na acusação de "rachadinha" (esquema de corrupção no governo do RJ) — pago para investigação por Sergio Moro (juiz parcial, depois justiceiro). Embora tenha escapado tecnicamente, a acusação de corrupção marca sua trajetória.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Corrupção: Rachadinha', 'Flávio promete zero tolerância mas está envolvido em acusação de rachadinha no governo do RJ.')">📲 Compartilhar no WhatsApp</button>
         </div>
     </div>
     
@@ -276,44 +310,47 @@
         
         <div class="lie-card">
             <h3>🗣️ O que diz (2025)</h3>
-            <p style="margin-top: 10px; color: #ffd700;">"Sou diferente do meu pai, mais moderado"</p>
+            <p style="margin-top: 10px; color: #009c3b;">"Sou diferente do meu pai, mais moderado"</p>
             
             <h3 style="color: #ff6b6b; margin-top: 20px;">VS</h3>
             
             <h3 style="margin-top: 20px;">📜 O que promete (idem 2025)</h3>
-            <p style="margin-top: 10px; color: #ffd700;">"Vou libertar meu pai e reformar o STF"</p>
+            <p style="margin-top: 10px; color: #009c3b;">"Vou libertar meu pai e reformar o STF"</p>
             
             <div class="reality">
                 Se é "diferente", por que promete fazer exatamente o que o pai faria? Se é "moderado", por que campanha se chama "em nome do pai"? A narrativa desmorona sozinha.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Contradição: Moderado vs. Pai', 'Flávio diz ser moderado mas promete libertar o pai e reformar o STF. Narrativa contraditória.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
             <h3>🗣️ O que dizem</h3>
-            <p style="margin-top: 10px; color: #ffd700;">"Odeio ideologia, quero pragmatismo"</p>
+            <p style="margin-top: 10px; color: #009c3b;">"Odeio ideologia, quero pragmatismo"</p>
             
             <h3 style="color: #ff6b6b; margin-top: 20px;">VS</h3>
             
             <h3 style="margin-top: 20px;">📰 O que fazem</h3>
-            <p style="margin-top: 10px; color: #ffd700;">Alimentam "guerra cultural" contra progressistas</p>
+            <p style="margin-top: 10px; color: #009c3b;">Alimentam "guerra cultural" contra progressistas</p>
             
             <div class="reality">
                 Define-se como pragmático, mas sua base política é exatamente ideológica (identitária, contra-progressista). Flávio surfa na onda de identidade bolsonarista enquanto tenta vender "pragmatismo" para o mercado.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Contradição: Pragmatismo', 'Flávio nega ideologia mas alimenta guerra cultural contra progressistas. Pragmatismo teórico, ideologia prática.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
             <h3>🗣️ O que diz</h3>
-            <p style="margin-top: 10px; color: #ffd700;">"Vou ter diálogo com todos, nada de guerra cultural"</p>
+            <p style="margin-top: 10px; color: #009c3b;">"Vou ter diálogo com todos, nada de guerra cultural"</p>
             
             <h3 style="color: #ff6b6b; margin-top: 20px;">VS</h3>
             
             <h3 style="margin-top: 20px;">🎤 O que faz</h3>
-            <p style="margin-top: 10px; color: #ffd700;">Amplifica "ditadura do STF", chama Lula de "ladrão", repete "ideologia de gênero"</p>
+            <p style="margin-top: 10px; color: #009c3b;">Amplifica "ditadura do STF", chama Lula de "ladrão", repete "ideologia de gênero"</p>
             
             <div class="reality">
                 Seu discurso continua polarizado. A "moderação" é teatro — ele fala bonito para banqueiros, mas sua base continua absorvendo o mesmo discurso inflamado do bolsonarismo.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Contradição: Diálogo', 'Flávio promete diálogo mas amplifica "ditadura do STF" e chama Lula de ladrão. Discurso polarizado.')">📲 Compartilhar no WhatsApp</button>
         </div>
     </div>
     
@@ -325,6 +362,7 @@
             <div class="reality">
                 Flávio foi investigado por possível esquema de "rachadinha" (desvio de salários de funcionários) durante seu governo no RJ. O caso foi anulado por Sergio Moro ter sido juiz parcial. Embora tenha escapado tecnicamente, a acusação de corrupção marca sua trajetória.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Escândalo: Rachadinha', 'Flávio foi investigado por rachadinha no RJ. Caso anulado por Moro ser juiz parcial, mas acusação marca trajetória.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -332,6 +370,7 @@
             <div class="reality">
                 Candidatura de Flávio é vista como candidatura do pai via procuração. Jair ainda controla a base, dita posições, influencia alianças. Flávio não tem autonomia política real — é um fantoche presidencial com objetivo claro: salvar o pai da prisão.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Escândalo: Controle Familiar', 'Candidatura de Flávio é vista como procuração de Jair. Flávio não tem autonomia, objetivo é libertar o pai.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -339,6 +378,7 @@
             <div class="reality">
                 Mercado financeiro prefere Tarcísio (SP) a Flávio. Banqueiros reconhecem competência de Tarcísio; de Flávio, veem "risco Bolsonaro". Sua campanha tenta se "vender" para banqueiros (eventos na Faria Lima), mas não consegue confiança ou preferência real.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Escândalo: Rejeição no Mercado', 'Mercado financeiro prefere Tarcísio. De Flávio, veem risco Bolsonaro. Campanha não consegue confiança.')">📲 Compartilhar no WhatsApp</button>
         </div>
         
         <div class="lie-card">
@@ -346,6 +386,7 @@
             <div class="reality">
                 Líderes do Centrão reconhecem que Flávio seria competitivo no 1º turno (por eleitorado bolsonarista), mas temem sua rejeição no 2º turno contra Lula. O cálculo deles: Flávio no páreo = vantagem para Lula na reeleição. Por isso preferem Tarcísio ou Caiado.
             </div>
+            <button class="share-button" onclick="shareOnWhatsApp('Escândalo: Rejeição no Centrão', 'Centrão reconhece Flávio competitivo em 1º turno mas teme rejeição em 2º. Preferem Tarcísio ou Caiado.')">📲 Compartilhar no WhatsApp</button>
         </div>
     </div>
     
