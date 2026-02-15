@@ -269,42 +269,64 @@
             font-weight: 700;
             font-size: 1em;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             font-family: 'Inter', sans-serif;
             box-sizing: border-box;
             line-height: 1;
+            position: relative;
+            overflow: hidden;
         }
         
         .share-button {
-            background: #25D366;
+            background: linear-gradient(135deg, #25D366 0%, #20c454 100%);
             color: white;
+            box-shadow: 
+                0 8px 16px rgba(37, 211, 102, 0.35),
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
         .share-button:hover {
-            background: #1eac50;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, #20c454 0%, #1eac50 100%);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 14px 28px rgba(37, 211, 102, 0.45),
+                0 6px 12px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
         .share-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 6px 12px rgba(37, 211, 102, 0.3),
+                0 3px 6px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
         .image-button {
-            background: #FCD116;
+            background: linear-gradient(135deg, #FCD116 0%, #f5c708 100%);
             color: #1a1a1a;
+            box-shadow: 
+                0 8px 16px rgba(252, 209, 22, 0.35),
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .image-button:hover {
-            background: #e6b800;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(252, 209, 22, 0.4);
+            background: linear-gradient(135deg, #f5c708 0%, #e6b800 100%);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 14px 28px rgba(252, 209, 22, 0.45),
+                0 6px 12px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .image-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(252, 209, 22, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 6px 12px rgba(252, 209, 22, 0.3),
+                0 3px 6px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .share-button {
