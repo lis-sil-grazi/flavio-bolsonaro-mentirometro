@@ -368,10 +368,10 @@
         }
         
         async function generateShareImage(cardId, title, lie, reality, sources) {
-            // Instagram Story: 1080x1920
+            // Extended portrait: 1080x2400 (full story + more)
             const canvas = document.createElement('canvas');
             canvas.width = 1080;
-            canvas.height = 1920;
+            canvas.height = 2400;
             
             const ctx = canvas.getContext('2d');
             
@@ -393,24 +393,53 @@
                 ctx.stroke();
             }
             
-            // ===== HEADER =====
-            ctx.fillStyle = 'rgba(252, 209, 22, 0.8)';
-            ctx.font = '600 20px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('MENTIRÓMETRO FLÁVIO', canvas.width / 2, 90);
+            // ===== LOGO + HEADER =====
+            // Draw shield logo with checkmark
+            const logoSize = 60;
+            const logoX = canvas.width / 2 - logoSize / 2;
+            const logoY = 40;
             
-            // ===== QUESTION TITLE =====
+            // Shield shape
             ctx.fillStyle = '#FCD116';
-            ctx.font = 'bold 60px Inter, sans-serif';
-            const titleLines = wrapText(ctx, title, canvas.width - 80, 60);
-            let yPos = 200;
+            ctx.beginPath();
+            ctx.moveTo(logoX + logoSize / 2, logoY + 15);
+            ctx.lineTo(logoX + logoSize, logoY + 30);
+            ctx.lineTo(logoX + logoSize, logoY + 45);
+            ctx.quadraticCurveTo(logoX + logoSize / 2, logoY + 65, logoX + logoSize / 2, logoY + 65);
+            ctx.quadraticCurveTo(logoX, logoY + 65, logoX, logoY + 45);
+            ctx.lineTo(logoX, logoY + 30);
+            ctx.lineTo(logoX + logoSize / 2, logoY + 15);
+            ctx.fill();
+            
+            // Checkmark inside shield
+            ctx.strokeStyle = '#009C3B';
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(logoX + 15, logoY + 45);
+            ctx.lineTo(logoX + 27, logoY + 55);
+            ctx.lineTo(logoX + 47, logoY + 35);
+            ctx.stroke();
+            
+            // Title text
+            ctx.fillStyle = 'rgba(252, 209, 22, 0.9)';
+            ctx.font = '600 18px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('MENTIRÓMETRO FLÁVIO', canvas.width / 2, logoY + logoSize + 35);
+            
+            // ===== MAIN QUESTION TITLE =====
+            let yPos = logoY + logoSize + 90;
+            ctx.fillStyle = '#FCD116';
+            ctx.font = 'bold 52px Inter, sans-serif';
+            const titleLines = wrapText(ctx, title, canvas.width - 80, 52);
             titleLines.forEach(line => {
                 ctx.fillText(line, canvas.width / 2, yPos);
-                yPos += 75;
+                yPos += 65;
             });
             
             // ===== SECTION 1: O QUE FOI DITO (MENTIRA) =====
-            yPos += 40;
+            yPos += 60;
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -418,24 +447,22 @@
             ctx.lineTo(canvas.width - 80, yPos);
             ctx.stroke();
             
-            // Label "MENTIRA"
             ctx.fillStyle = '#FF6B6B';
-            ctx.font = '600 20px Inter, sans-serif';
+            ctx.font = '600 22px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('❌ O QUE FOI DITO', 80, yPos + 50);
+            ctx.fillText('❌ O QUE FOI DITO', 80, yPos + 55);
             
-            // Lie text
             ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = 'italic 22px Inter, sans-serif';
-            const lieLines = wrapText(ctx, `"${lie}"`, canvas.width - 160, 22);
-            let lieY = yPos + 95;
-            lieLines.slice(0, 3).forEach(line => {
+            ctx.font = 'italic 24px Inter, sans-serif';
+            const lieLines = wrapText(ctx, `"${lie}"`, canvas.width - 160, 24);
+            let lieY = yPos + 110;
+            lieLines.slice(0, 4).forEach(line => {
                 ctx.fillText(line, 100, lieY);
-                lieY += 40;
+                lieY += 45;
             });
             
             // ===== SECTION 2: REALIDADE =====
-            yPos = lieY + 40;
+            yPos = lieY + 50;
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -443,24 +470,22 @@
             ctx.lineTo(canvas.width - 80, yPos);
             ctx.stroke();
             
-            // Label "REALIDADE"
             ctx.fillStyle = '#52C41A';
-            ctx.font = '600 20px Inter, sans-serif';
+            ctx.font = '600 22px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('✓ REALIDADE', 80, yPos + 50);
+            ctx.fillText('✓ REALIDADE', 80, yPos + 55);
             
-            // Reality text
             ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            ctx.font = '24px Inter, sans-serif';
-            const realityLines = wrapText(ctx, reality, canvas.width - 160, 24);
-            let realityY = yPos + 95;
-            realityLines.slice(0, 4).forEach(line => {
+            ctx.font = '26px Inter, sans-serif';
+            const realityLines = wrapText(ctx, reality, canvas.width - 160, 26);
+            let realityY = yPos + 110;
+            realityLines.slice(0, 5).forEach(line => {
                 ctx.fillText(line, 100, realityY);
-                realityY += 40;
+                realityY += 48;
             });
             
             // ===== SECTION 3: FONTES =====
-            yPos = realityY + 40;
+            yPos = realityY + 50;
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -468,38 +493,37 @@
             ctx.lineTo(canvas.width - 80, yPos);
             ctx.stroke();
             
-            // Label "FONTES"
             ctx.fillStyle = '#1890FF';
-            ctx.font = '600 18px Inter, sans-serif';
+            ctx.font = '600 22px Inter, sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('📚 FONTES VERIFICADAS', 80, yPos + 45);
+            ctx.fillText('📚 FONTES VERIFICADAS', 80, yPos + 55);
             
-            // Sources text
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            ctx.font = '18px Inter, sans-serif';
-            const sourcesLines = wrapText(ctx, sources, canvas.width - 160, 18);
-            let sourcesY = yPos + 90;
-            sourcesLines.slice(0, 3).forEach(line => {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+            ctx.font = '22px Inter, sans-serif';
+            const sourcesLines = wrapText(ctx, sources, canvas.width - 160, 22);
+            let sourcesY = yPos + 110;
+            sourcesLines.slice(0, 4).forEach(line => {
                 ctx.fillText(line, 100, sourcesY);
-                sourcesY += 35;
+                sourcesY += 45;
             });
             
             // ===== FOOTER =====
+            yPos = sourcesY + 60;
             ctx.strokeStyle = 'rgba(252, 209, 22, 0.5)';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(80, 1800);
-            ctx.lineTo(canvas.width - 80, 1800);
+            ctx.moveTo(80, yPos);
+            ctx.lineTo(canvas.width - 80, yPos);
             ctx.stroke();
             
             ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = '600 24px Inter, sans-serif';
+            ctx.font = '600 26px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, 1860);
+            ctx.fillText('mentirómetro.flávio.com.br', canvas.width / 2, yPos + 60);
             
             ctx.fillStyle = '#FCD116';
-            ctx.font = '500 18px Inter, sans-serif';
-            ctx.fillText('Compartilhe a verdade', canvas.width / 2, 1905);
+            ctx.font = '500 20px Inter, sans-serif';
+            ctx.fillText('Compartilhe a verdade', canvas.width / 2, yPos + 110);
             
             // Download
             canvas.toBlob(function(blob) {
