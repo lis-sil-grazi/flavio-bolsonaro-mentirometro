@@ -255,7 +255,7 @@
             flex-wrap: wrap;
         }
         
-        .share-button, .image-button {
+        .share-button {
             flex: 1;
             min-width: 150px;
             height: 52px;
@@ -275,9 +275,6 @@
             line-height: 1;
             position: relative;
             overflow: hidden;
-        }
-        
-        .share-button {
             background: linear-gradient(135deg, #25D366 0%, #20c454 100%);
             color: white;
             box-shadow: 
@@ -301,32 +298,6 @@
                 0 6px 12px rgba(37, 211, 102, 0.3),
                 0 3px 6px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        
-        .image-button {
-            background: linear-gradient(135deg, #FCD116 0%, #f5c708 100%);
-            color: #1a1a1a;
-            box-shadow: 
-                0 8px 16px rgba(252, 209, 22, 0.35),
-                0 4px 8px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-        
-        .image-button:hover {
-            background: linear-gradient(135deg, #f5c708 0%, #e6b800 100%);
-            transform: translateY(-3px);
-            box-shadow: 
-                0 14px 28px rgba(252, 209, 22, 0.45),
-                0 6px 12px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-        
-        .image-button:active {
-            transform: translateY(-1px);
-            box-shadow: 
-                0 6px 12px rgba(252, 209, 22, 0.3),
-                0 3px 6px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .share-button {
@@ -405,7 +376,7 @@
             window.open(whatsappUrl, '_blank');
         }
         
-        async function generateShareImage(cardId, title, lie, reality, sources) {
+        // Image generation removed - need better training on visual design
             // Split-screen viral design: 1080x1920 (Instagram native)
             const canvas = document.createElement('canvas');
             canvas.width = 1080;
@@ -660,8 +631,7 @@
                 <a href="https://www.bloomberg.com/news/articles/2026-02-02/brazil-politics-lula-to-adapt-message-flavio-replicates-father" target="_blank">📰 Bloomberg</a>
             </div>
             <div class="button-group">
-                <button class="share-button" onclick="shareOnWhatsApp('Bolsonaro Moderado?', 'Flávio promete ser moderado mas defende exatamente as mesmas políticas do pai.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card1', 'Bolsonaro Moderado?', 'Flávio promete ser moderado...', 'Flávio diz em campanha que vai ser moderado, mas defende exatamente as mesmas políticas do pai.', 'Folha de S.Paulo, Bloomberg')">🖼️ Imagem</button>
+                <button class="share-button" onclick="shareOnWhatsApp('Bolsonaro Moderado?', 'Flávio promete ser moderado mas defende exatamente as mesmas políticas do pai.')">📲 Compartilhar</button>
             </div>
         </div>
         
@@ -681,8 +651,7 @@
                 <a href="https://www.tse.jus.br" target="_blank">⚖️ TSE (Tribunal Superior Eleitoral)</a>
             </div>
             <div class="button-group">
-                <button class="share-button" onclick="shareOnWhatsApp('STF Condenação', 'Bolsonaro foi condenado por órgãos judiciais por tentar golpe.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card2', 'Prisão Injusta?', 'Meu pai foi preso injustamente...', 'Bolsonaro foi condenado por órgãos judiciais por tentar um golpe, não perseguição.', 'STF, TSE')">🖼️ Imagem</button>
+                <button class="share-button" onclick="shareOnWhatsApp('STF Condenação', 'Bolsonaro foi condenado por órgãos judiciais por tentar golpe.')">📲 Compartilhar</button>
             </div>
         </div>
         
@@ -702,8 +671,7 @@
                 <a href="https://www.bcb.gov.br" target="_blank">📊 Banco Central do Brasil</a>
             </div>
             <div class="button-group">
-                <button class="share-button" onclick="shareOnWhatsApp('Crescimento Econômico', 'IBGE: Bolsonaro = 1,3% ao ano. Lula = 2,5%.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card3', 'Crescimento de 3%?', 'Economia cresceu 3% ao ano...', 'IBGE: crescimento médio Bolsonaro foi 1,3% ao ano. Lula = 2,5%.', 'IBGE, Banco Central')">🖼️ Imagem</button>
+                <button class="share-button" onclick="shareOnWhatsApp('Crescimento Econômico', 'IBGE: Bolsonaro = 1,3% ao ano. Lula = 2,5%.')">📲 Compartilhar</button>
             </div>
         </div>
         
@@ -723,8 +691,7 @@
                 <a href="https://www.ibge.gov.br/explica/desemprego.php" target="_blank">📊 IBGE - Taxa de Desemprego</a>
             </div>
             <div class="button-group">
-                <button class="share-button" onclick="shareOnWhatsApp('Empregos', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card4', 'Milhões de Empregos?', 'Bolsonaro criou 4 milhões...', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.', 'CAGED, IBGE')">🖼️ Imagem</button>
+                <button class="share-button" onclick="shareOnWhatsApp('Empregos', 'CAGED: Bolsonaro criou 1.1 mi. Lula criou 3.2 mi no mesmo período.')">📲 Compartilhar</button>
             </div>
         </div>
         
@@ -744,8 +711,7 @@
                 <a href="https://www.ibge.gov.br/explica/inflacao.php" target="_blank">📊 IBGE - IPCA</a>
             </div>
             <div class="button-group">
-                <button class="share-button" onclick="shareOnWhatsApp('Inflação', 'Bolsonaro terminou com 5,8%. Queda recente = mérito de Lula.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card5', 'Inflação Controlada?', 'Inflação caiu porque Bolsonaro...', 'Bolsonaro terminou com 5,8%. A redução recente é mérito de Lula.', 'Banco Central, IBGE')">🖼️ Imagem</button>
+                <button class="share-button" onclick="shareOnWhatsApp('Inflação', 'Bolsonaro terminou com 5,8%. Queda recente = mérito de Lula.')">📲 Compartilhar</button>
             </div>
         </div>
         
@@ -765,8 +731,7 @@
                 <a href="https://www.tce.rj.gov.br" target="_blank">⚖️ TCE-RJ - Tribunal de Contas</a>
             </div>
             <div class="button-group">
-                <button class="share-button" onclick="shareOnWhatsApp('Rachadinha', 'Flávio investigado por corrupção (rachadinha) no RJ.')">📲 WhatsApp</button>
-                <button class="image-button" onclick="generateShareImage('card6', 'Combater Corrupção?', 'Vou combater a corrupção...', 'Flávio foi investigado por rachadinha (corrupção) quando era deputado no RJ.', 'STJ, TCE-RJ')">🖼️ Imagem</button>
+                <button class="share-button" onclick="shareOnWhatsApp('Rachadinha', 'Flávio investigado por corrupção (rachadinha) no RJ.')">📲 Compartilhar</button>
             </div>
         </div>
     </div>
