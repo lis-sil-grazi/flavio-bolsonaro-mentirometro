@@ -44,6 +44,15 @@
       "quote": "\"Geramos mais de 4 milhões de postos formais. Ninguém fez tanto\"",
       "reality": "CAGED: Bolsonaro saldo +1.1 milhão líquido (2019-2022). Lula gerou +3,2 milhões em período equivalente.",
       "sources": ["CAGED", "IBGE"]
+    },
+    {
+      "id": 6,
+      "category": "FALSO",
+      "date": "Feb 15-16 2026",
+      "title": "\"Desfile de Lula na Sapucaí usou dinheiro de impostos dos brasileiros\"",
+      "quote": "\"Diferente do desfile eleitoral do Lula, esse vídeo não usou dinheiro dos impostos\" e \"Lula esfola o povo com aumento de impostos e usa esse mesmo dinheiro arrecadado para fazer campanha antecipada pra ele mesmo\"",
+      "reality": "A Acadêmicos de Niterói foi aprovada pelo Ministério da Cultura em Dec 2025 para captar R$ 5,1 milhões via Lei Rouanet. PORÉM, a escola REJEITOU explicitamente os recursos, alegando falta de tempo para buscar investidores. Lei Rouanet NÃO é dinheiro direto do governo — é incentivo fiscal onde pessoas/empresas privadas escolhem desviar parte de seu IR para projetos culturais aprovados. O desfile foi financiado com dinheiro privado.",
+      "sources": ["Lupa (agencialupa.org)", "Poder360", "Aos Fatos"]
     }
   ],
   "contradictions": [
@@ -76,8 +85,8 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-02-15T10:50:00Z",
-    "source": "Polígrafo, IBGE, CAGED, Folha, Bloomberg",
-    "version": "1.0.0"
+    "lastUpdated": "2026-02-16T10:00:00Z",
+    "source": "Polígrafo, IBGE, CAGED, Folha, Bloomberg, Lupa, Aos Fatos",
+    "version": "1.0.1"
   }
 }
