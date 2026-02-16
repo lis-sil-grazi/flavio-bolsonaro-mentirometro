@@ -13,27 +13,40 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0e27;
-            color: #e0e6ed;
+            background: #ffffff;
+            color: #1a1a1a;
             line-height: 1.6;
         }
         
         header {
-            background: linear-gradient(135deg, #1a1f3a 0%, #2d2e5f 100%);
+            background: linear-gradient(135deg, #FCD116 0%, #228B22 100%);
             padding: 60px 20px;
             text-align: center;
-            border-bottom: 3px solid #ff4444;
+            border-bottom: none;
+        }
+        
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+        
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
         }
         
         header h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            color: #ff4444;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         header .tagline {
             font-size: 1.2em;
-            color: #888;
+            color: rgba(255,255,255,0.95);
             font-style: italic;
         }
         
@@ -47,8 +60,8 @@
         }
         
         .stat-box {
-            background: rgba(255, 68, 68, 0.1);
-            border: 2px solid #ff4444;
+            background: rgba(34, 139, 34, 0.08);
+            border: 2px solid #228B22;
             padding: 30px;
             border-radius: 8px;
             text-align: center;
@@ -57,24 +70,24 @@
         .stat-number {
             font-size: 2.5em;
             font-weight: bold;
-            color: #ff4444;
+            color: #228B22;
         }
         
         .stat-label {
-            color: #888;
+            color: #555;
             margin-top: 10px;
             font-size: 0.9em;
         }
         
         .quote {
-            background: rgba(100, 100, 150, 0.2);
-            border-left: 4px solid #ff4444;
+            background: rgba(252, 209, 22, 0.1);
+            border-left: 4px solid #FCD116;
             padding: 20px;
             margin: 30px auto;
             max-width: 800px;
             font-size: 1.1em;
             font-style: italic;
-            color: #ccc;
+            color: #333;
         }
         
         .container {
@@ -87,14 +100,14 @@
             font-size: 2em;
             margin-top: 50px;
             margin-bottom: 30px;
-            color: #ff4444;
-            border-bottom: 2px solid #ff4444;
+            color: #228B22;
+            border-bottom: 3px solid #FCD116;
             padding-bottom: 10px;
         }
         
         .lie-card {
-            background: rgba(255, 68, 68, 0.05);
-            border: 1px solid rgba(255, 68, 68, 0.3);
+            background: rgba(34, 139, 34, 0.03);
+            border: 1px solid rgba(34, 139, 34, 0.2);
             padding: 30px;
             margin-bottom: 25px;
             border-radius: 8px;
@@ -102,13 +115,13 @@
         }
         
         .lie-card:hover {
-            border-color: #ff4444;
-            background: rgba(255, 68, 68, 0.1);
+            border-color: #228B22;
+            background: rgba(34, 139, 34, 0.08);
         }
         
         .lie-card .category {
             display: inline-block;
-            background: #ff4444;
+            background: #228B22;
             color: white;
             padding: 6px 14px;
             border-radius: 20px;
@@ -126,39 +139,84 @@
         .lie-card h3 {
             font-size: 1.3em;
             margin: 15px 0;
-            color: #fff;
+            color: #228B22;
         }
         
         .lie-card .quote-text {
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 3px solid #ff4444;
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 3px solid #FCD116;
             padding: 15px;
             margin: 15px 0;
             font-style: italic;
-            color: #ccc;
+            color: #333;
         }
         
         .lie-card .reality {
-            background: rgba(100, 200, 100, 0.1);
-            border-left: 3px solid #66cc66;
+            background: rgba(34, 139, 34, 0.08);
+            border-left: 3px solid #228B22;
             padding: 15px;
             margin-top: 15px;
-            color: #ccc;
+            color: #333;
         }
         
         .lie-card .reality::before {
             content: "✓ REALIDADE: ";
-            color: #66cc66;
+            color: #228B22;
             font-weight: bold;
         }
         
+        /* WhatsApp Share Button */
+        .share-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #FCD116 0%, #228B22 100%);
+            margin: 40px 0;
+            border-radius: 12px;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            background: #1FAE50;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .whatsapp-icon {
+            font-size: 24px;
+        }
+        
         footer {
-            background: #1a1f3a;
-            border-top: 2px solid #ff4444;
+            background: #228B22;
+            border-top: none;
             padding: 30px;
             text-align: center;
-            color: #888;
+            color: white;
             margin-top: 60px;
+        }
+        
+        footer p {
+            color: rgba(255,255,255,0.95);
         }
         
         @media (max-width: 768px) {
@@ -169,14 +227,21 @@
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .whatsapp-btn {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🔥 Mentirómetro Flávio</h1>
+        <div class="logo-container">
+            <img src="logo.svg" alt="Mentirómetro Flávio Logo">
+        </div>
+        <h1>Mentirómetro Flávio</h1>
         <p class="tagline">Fact-Check de Flávio Bolsonaro para a Presidência 2026</p>
-        <p class="tagline" style="margin-top: 20px; font-size: 0.9em;">Candidato sabichão, fatos nem tanto</p>
     </header>
     
     <div class="stats">
@@ -317,6 +382,13 @@
             </div>
         </div>
     
+    </div>
+    
+    <div class="share-section">
+        <a href="https://wa.me/?text=Mentirómetro%20Flávio%20Bolsonaro%20-%20Fact-check%20para%202026%0Ahttps://lis-sil-grazi.github.io/flavio-bolsonaro-mentirometro/" class="whatsapp-btn">
+            <span class="whatsapp-icon">💬</span>
+            Compartilhar no WhatsApp
+        </a>
     </div>
     
     <footer>
