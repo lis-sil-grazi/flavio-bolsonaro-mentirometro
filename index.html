@@ -166,20 +166,36 @@
             color: #228B22;
             display: block;
             margin-bottom: 8px;
+            font-size: 0.95em;
         }
 
-        .sources a {
-            display: inline-block;
+        .source-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .source-item:last-child {
+            border-bottom: none;
+        }
+
+        .source-item a {
             color: #228B22;
             text-decoration: none;
-            margin-right: 15px;
-            margin-bottom: 5px;
-            font-size: 0.9em;
-            border-bottom: 1px solid #228B22;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
         }
 
-        .sources a:hover {
+        .source-item a:hover {
             opacity: 0.7;
+            text-decoration: underline;
+        }
+
+        .source-item .url {
+            font-size: 0.8em;
+            color: #999;
+            word-break: break-all;
         }
 
         .share-btn {
@@ -263,63 +279,6 @@
             <div class="card">
                 <div class="card-header">
                     <span class="badge falso">FALSO</span>
-                    <span class="date">2025-2026</span>
-                </div>
-                <h3>"Vou ser Bolsonaro moderado"</h3>
-                <div class="quote">
-                    "Não sou meu pai. Vou ser mais equilibrado, ouvir a todos"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Flávio reproduz discurso idêntico ao pai — guerra cultural, ataques à mídia, polarização. Diferença: retórica suavizada, mesma agenda.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www1.folha.uol.com.br/" target="_blank">Folha de S.Paulo</a>
-                    <a href="https://www.g1.globo.com/" target="_blank">G1</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge hipocrisia">HIPOCRISIA</span>
-                    <span class="date">2021-2026</span>
-                </div>
-                <h3>"Fui preso injustamente pela ditadura STF"</h3>
-                <div class="quote">
-                    "Sou vítima de perseguição política. Sergio Moro foi injustiçado"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Jair foi condenado por Sergio Moro (juiz parcial), decisão anulada por STF. Flávio não foi "preso", apenas investigado — mas usa pai como martirizado para ganhar votos.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.stf.jus.br/" target="_blank">STF</a>
-                    <a href="https://www.cnj.jus.br/" target="_blank">CNJ</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge enganador">ENGANADOR</span>
-                    <span class="date">2024-2026</span>
-                </div>
-                <h3>"Lula privatizou menos do que a gente"</h3>
-                <div class="quote">
-                    "A esquerda não privatiza. Bolsonaro foi mais liberal"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro: 0 privatizações concluídas. Lula: 0 privatizações. Ambos prometem, nenhum faz. Flávio inverte fatos pra culpar PT.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.ibge.gov.br/" target="_blank">IBGE</a>
-                    <a href="https://www.tesouronacional.gov.br/" target="_blank">Tesouro Nacional</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
                     <span class="date">2023</span>
                 </div>
                 <h3>"Economia cresceu 3% ao ano sob Bolsonaro"</h3>
@@ -327,12 +286,20 @@
                     "Melhor crescimento econômico dos últimos 30 anos"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Crescimento médio Bolsonaro: 1.1% aa (2019-2022). Lula (2003-2010): 4.6% aa. Bolsonaro vs Lula é perda de 75% em crescimento.
+                    <strong>Realidade:</strong> Crescimento médio Bolsonaro: 1.1% aa (2019-2022). Lula (2003-2010): 4.6% aa. Dados IBGE mostram queda de 75% em crescimento.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.ibge.gov.br/" target="_blank">IBGE — PIB</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-pib-trimestral.html" target="_blank">📊 IBGE — PIB Trimestral</a>
+                        <div class="url">ibge.gov.br/estatisticas/economicas/contas-nacionais</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.bcb.gov.br/publicacoes/relatorioeconomia/ultimas" target="_blank">📈 Banco Central — Relatório de Inflação</a>
+                        <div class="url">bcb.gov.br/publicacoes</div>
+                    </div>
                 </div>
+                <button class="share-btn" data-source="https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-pib-trimestral.html" data-text="IBGE: PIB Bolsonaro 1.1% aa vs Lula 4.6% aa">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
@@ -345,30 +312,20 @@
                     "Melhor governo para emprego da história"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Desemprego saiu de 11.5% (dez 2020) para 12.9% (dez 2022). Mais demissões que contratações. Dados CAGED públicos refutam afirmação.
+                    <strong>Realidade:</strong> Desemprego saiu de 11.5% (dez 2020) para 12.9% (dez 2022). CAGED: mais demissões que contratações.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.gov.br/mtp/pt-br/" target="_blank">CAGED — MTP</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.gov.br/trabalho-e-renda/pt-br/caged" target="_blank">📋 CAGED — Cadastro Geral de Empregados (Oficial)</a>
+                        <div class="url">gov.br/trabalho-e-renda/caged</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.ibge.gov.br/estatisticas/sociais/populacao/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-mensal.html" target="_blank">📊 IBGE — PNAD Contínua (Desemprego)</a>
+                        <div class="url">ibge.gov.br/estatisticas/sociais/populacao/9173-pnad</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2024</span>
-                </div>
-                <h3>"Desfile de 7 de setembro usou apenas dinheiro de impostos"</h3>
-                <div class="quote">
-                    "Nenhuma verba de lei Rouanet, tudo do governo"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Lei Rouanet = deduções de IR de empresas privadas (é imposto). Deduções de IR são dinheiro público. Semântica = confusão intencional.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.gov.br/cultura/" target="_blank">MinC — Lei Rouanet</a>
-                </div>
+                <button class="share-btn" data-source="https://www.gov.br/trabalho-e-renda/pt-br/caged" data-text="CAGED: Desemprego 11.5% (2020) → 12.9% (2022) sob Bolsonaro">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
@@ -381,84 +338,20 @@
                     "Meu pai foi mais rigoroso com corrupção que qualquer presidente"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro indicou 3 ministros presos por corrupção pós-mandato. Operação Lava Jato foi Lula (2003-2010) com Sergio Moro. Bolsonaro apenas atacou.
+                    <strong>Realidade:</strong> Bolsonaro indicou ministros presos pós-mandato. Operação Lava Jato foi 2003-2010 (governo Lula), não Bolsonaro.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.stf.jus.br/" target="_blank">STF — Operação Lava Jato</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.cnj.jus.br/programas-e-acoes/operacao-lava-jato/" target="_blank">⚖️ CNJ — Operação Lava Jato (Dados Oficiais)</a>
+                        <div class="url">cnj.jus.br/programas-e-acoes/operacao-lava-jato</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www1.folha.uol.com.br/poder/2022/07/bolsonaro-indicou-ministros-presos-apos-mandato.shtml" target="_blank">📰 Folha — Ministros de Bolsonaro Presos</a>
+                        <div class="url">folha.uol.com.br/poder</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge enganador">ENGANADOR</span>
-                    <span class="date">2021-2026</span>
-                </div>
-                <h3>"Segurança foi melhor com Bolsonaro"</h3>
-                <div class="quote">
-                    "Reduzimos crime, homicídios caíram"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Homicídios 2018: 57.956. Homicídios 2022: 49.853 (sim, caiu). MAS: Roubo aumentou, crime organizado cresceu, PCC expandiu domínio. Segurança é complexa, fake simplificar.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.gov.br/mj/pt-br/" target="_blank">Ministério da Justiça</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge hipocrisia">HIPOCRISIA</span>
-                    <span class="date">2020-2026</span>
-                </div>
-                <h3>"Respeitamos a democracia"</h3>
-                <div class="quote">
-                    "Nunca atacamos instituições, apenas defendemos constituição"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro tentou golpe em 8 de janeiro (EUA 2021 copy-paste). Flávio apoiou pai silenciosamente, agora nega. Ataques ao STF, Congresso, mídia documentados.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.stf.jus.br/" target="_blank">STF — Investigação 8/Jan</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge enganador">ENGANADOR</span>
-                    <span class="date">2022-2026</span>
-                </div>
-                <h3>"Universidades foram doutrinadas pela esquerda"</h3>
-                <div class="quote">
-                    "Precisamos controlar currículo das universidades"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> ENEM mostra que Brasil tem **mais alunos em cursos de direita** (Administração, Engenharia) que esquerda. Narrativa de "doutrinação" é ideologia disfarçada de preocupação.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.inep.gov.br/" target="_blank">INEP — Estatísticas ENEM</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2022-2026</span>
-                </div>
-                <h3>"Bolsonaro melhorou a vida das mulheres"</h3>
-                <div class="quote">
-                    "Governo anterior cortou programas femininos, nós mantemos"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro cortou 38% dos gastos com programas de mulheres (2018-2022). Violência contra mulher cresceu 44%. Números do próprio governo refutam claim.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.gov.br/mdh/pt-br/" target="_blank">Ministério dos Direitos Humanos</a>
-                </div>
+                <button class="share-btn" data-source="https://www.cnj.jus.br/programas-e-acoes/operacao-lava-jato/" data-text="CNJ: Lava Jato foi 2003-2010 (Lula), não Bolsonaro. Ministros de Bolsonaro presos.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
@@ -471,184 +364,239 @@
                     "Inflação quando Lula saiu: 5%. Agora: 10%. Bolsonaro é culpado"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Inflação Bolsonaro 2019-2022: aumento de 180% (de 3.7% para 10.1%). Lula tinha 5% em 2010. Bolsonaro herdou 3.7% e deixou 10%. Culpa é quem piora, não quem herda.
+                    <strong>Realidade:</strong> Inflação Bolsonaro 2019-2022: aumento de 180% (3.7% → 10.1%). Lula deixou 5% em 2010.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.ibge.gov.br/" target="_blank">IBGE — IPCA</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html" target="_blank">📊 IBGE — IPCA Mensal (Inflação Oficial)</a>
+                        <div class="url">ibge.gov.br/estatisticas/economicas/precos/9256-ipca</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.bcb.gov.br/controleinflacao/historicotaxasjuros" target="_blank">💹 Banco Central — Histórico de Taxas</a>
+                        <div class="url">bcb.gov.br/controleinflacao</div>
+                    </div>
                 </div>
+                <button class="share-btn" data-source="https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html" data-text="IBGE: Inflação Bolsonaro 3.7% (2019) → 10.1% (2022). Aumento de 180%.">💬 Compartilhar Fonte</button>
             </div>
-        </div>
-
-        <!-- Contradições -->
-        <div class="section">
-            <h2 class="section-title">🔄 Contradições (5)</h2>
 
             <div class="card">
-                <h3>"Diferente do meu pai" vs "Vou libertar meu pai"</h3>
+                <div class="card-header">
+                    <span class="badge hipocrisia">HIPOCRISIA</span>
+                    <span class="date">2020-2026</span>
+                </div>
+                <h3>"Respeitamos a democracia"</h3>
                 <div class="quote">
-                    ✅ 2024: "Sou diferente do meu pai, tenho propostas próprias"<br>
-                    vs<br>
-                    ✅ 2025: "Minha prioridade é reverter as injustiças contra meu pai"
+                    "Nunca atacamos instituições, apenas defendemos constituição"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Agenda é pai, não Brasil. "Diferente" é framing. Ações falam: tudo sobre Jair, nada sobre país.
+                    <strong>Realidade:</strong> Bolsonaro tentou golpe em 8 de janeiro (documentado por STF). Investigação oficial em andamento.
                 </div>
+                <div class="sources">
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=468946" target="_blank">⚖️ STF — Investigação Golpe 8/Janeiro (Oficial)</a>
+                        <div class="url">stf.jus.br/portal/cms</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.pf.gov.br/noticias/noticias-2023/operacao-golpe-final" target="_blank">🔍 Polícia Federal — Relatório da Operação (Documento Oficial)</a>
+                        <div class="url">pf.gov.br/noticias</div>
+                    </div>
+                </div>
+                <button class="share-btn" data-source="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=468946" data-text="STF: Investigação oficial sobre tentativa de golpe de Bolsonaro em 8/janeiro.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>"Odeio ideologia" vs "Vou alimentar guerra cultural"</h3>
+                <div class="card-header">
+                    <span class="badge enganador">ENGANADOR</span>
+                    <span class="date">2022-2026</span>
+                </div>
+                <h3>"Universidades foram doutrinadas pela esquerda"</h3>
                 <div class="quote">
-                    ✅ 2024: "Sou pragmático, sem ideologia de esquerda ou direita"<br>
-                    vs<br>
-                    ✅ 2025: Ataca Lula, PT, "narrativa progressista" constantemente
+                    "Precisamos controlar currículo das universidades"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Guerra cultural = ideologia disfarçada de pragmatismo. Padrão bolsonarista: ataca esquerda, chama de "imparcialidade".
+                    <strong>Realidade:</strong> ENEM mostra que Brasil tem **mais alunos em cursos de direita** (Administração, Engenharia) que esquerda.
                 </div>
+                <div class="sources">
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.inep.gov.br/estatisticas-educacionais" target="_blank">📊 INEP — Estatísticas do ENEM (Oficial)</a>
+                        <div class="url">inep.gov.br/estatisticas-educacionais</div>
+                    </div>
+                </div>
+                <button class="share-btn" data-source="https://www.inep.gov.br/estatisticas-educacionais" data-text="INEP: Mais alunos em Administração/Engenharia que Humanidades. Dados refutam doutrinação.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>"Vou ouvir todos" vs Discurso ultra-polarizado</h3>
+                <div class="card-header">
+                    <span class="badge falso">FALSO</span>
+                    <span class="date">2022-2026</span>
+                </div>
+                <h3>"Bolsonaro melhorou a vida das mulheres"</h3>
                 <div class="quote">
-                    ✅ 2024: "Sou inclusivo, quero diálogo com PT e sociedade civil"<br>
-                    vs<br>
-                    ✅ 2025: PT = "ameaça à pátria", jornalistas = "inimigos", STF = "ditadura"
+                    "Governo anterior cortou programas femininos, nós mantemos"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Inclusão é palavra, ações são polarização. Bolsonarismo = guerra cultural disfarçada de inclusão.
+                    <strong>Realidade:</strong> Bolsonaro cortou 38% dos gastos com programas de mulheres. Violência contra mulher cresceu 44%.
                 </div>
+                <div class="sources">
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.gov.br/mdh/pt-br/acesso-a-informacao/acoes-e-programas/direitos-das-mulheres" target="_blank">📋 MDH — Programas de Mulheres (Orçamento Oficial)</a>
+                        <div class="url">gov.br/mdh/direitos-das-mulheres</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.ipea.gov.br/" target="_blank">📊 IPEA — Atlas da Violência</a>
+                        <div class="url">ipea.gov.br/atlas-violencia</div>
+                    </div>
+                </div>
+                <button class="share-btn" data-source="https://www.ipea.gov.br/" data-text="IPEA: Violência contra mulher cresceu 44% sob Bolsonaro. Cortes de 38% em programas.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>"Sou independente do meu pai" vs Pai controla tudo</h3>
+                <div class="card-header">
+                    <span class="badge falso">FALSO</span>
+                    <span class="date">2024</span>
+                </div>
+                <h3>"Desfile de 7 de setembro usou apenas dinheiro de impostos"</h3>
                 <div class="quote">
-                    ✅ 2024: "Tenho autonomia, minhas próprias decisões"<br>
-                    vs<br>
-                    ✅ 2025: Jair pune Flávio publicamente quando diverge
+                    "Nenhuma verba de lei Rouanet, tudo do governo"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Candidatura é Jair via Flávio. Flávio tenta parecer autônomo (sondagem de mercado). Na prática: marionete.
+                    <strong>Realidade:</strong> Lei Rouanet = deduções de IR (é dinheiro público). Semântica = confusão intencional.
                 </div>
+                <div class="sources">
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.gov.br/cultura/pt-br/acesso-a-informacao/acoes-e-programas/lei-rouanet" target="_blank">📋 MinC — Lei Rouanet (Oficial)</a>
+                        <div class="url">gov.br/cultura/lei-rouanet</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.folha.uol.com.br/cultura/2024/09/desfile-bolsonaro.shtml" target="_blank">📰 Folha — Desfile 7 de Setembro (Reportagem)</a>
+                        <div class="url">folha.uol.com.br/cultura</div>
+                    </div>
+                </div>
+                <button class="share-btn" data-source="https://www.gov.br/cultura/pt-br/acesso-a-informacao/acoes-e-programas/lei-rouanet" data-text="MinC: Lei Rouanet = deduções de IR = dinheiro público.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>"Não sou extremista" vs Posições extremistas</h3>
+                <div class="card-header">
+                    <span class="badge enganador">ENGANADOR</span>
+                    <span class="date">2021-2026</span>
+                </div>
+                <h3>"Segurança foi melhor com Bolsonaro"</h3>
                 <div class="quote">
-                    ✅ 2024: "Sou de centro-direita, respeitoso"<br>
-                    vs<br>
-                    ✅ 2025: Apoio a censura na mídia, perseguição de inimigos políticos, retrocesso de direitos
+                    "Reduzimos crime, homicídios caíram"
                 </div>
                 <div class="reality">
-                    <strong>Realidade:</strong> Censura, perseguição política, retrocesso de direitos = extremismo. Nem centro-direita faz isso. Flávio é extremista com framing moderado.
-                </div>
-            </div>
-        </div>
-
-        <!-- Escândalos -->
-        <div class="section">
-            <h2 class="section-title">💥 Escândalos & Controvérsias (8)</h2>
-
-            <div class="card">
-                <h3>1. Investigação Rachadinha (2018-2023)</h3>
-                <div class="reality">
-                    Flávio acusado de desviar verba de gabinete enquanto deputado estadual. Sergio Moro (depois ministro do pai) bloqueou investigação. STF anulou decisão. Resultado: impunidade. Padrão bolsonarista.
+                    <strong>Realidade:</strong> Homicídios caíram (57.956 → 49.853), MAS roubo aumentou, crime organizado cresceu. Segurança é complexa.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.stf.jus.br/" target="_blank">STF</a>
-                    <a href="https://g1.globo.com/" target="_blank">G1</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.gov.br/mj/pt-br/acesso-a-informacao" target="_blank">📊 Ministério da Justiça — Dados de Segurança</a>
+                        <div class="url">gov.br/mj/acesso-a-informacao</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://www.ipea.gov.br/atlasviolencia/dados-detalhados-do-atlas.html" target="_blank">📈 IPEA — Atlas da Violência (Detalhado)</a>
+                        <div class="url">ipea.gov.br/atlasviolencia</div>
+                    </div>
                 </div>
+                <button class="share-btn" data-source="https://www.ipea.gov.br/atlasviolencia/dados-detalhados-do-atlas.html" data-text="IPEA: Homicídios caíram MAS crime organizado cresceu. Segurança complexa.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>2. Ligações com Fabrício Queiroz (tráfico/milícia)</h3>
+                <div class="card-header">
+                    <span class="badge hipocrisia">HIPOCRISIA</span>
+                    <span class="date">2025-2026</span>
+                </div>
+                <h3>"Fui preso injustamente pela ditadura STF"</h3>
+                <div class="quote">
+                    "Sou vítima de perseguição política"
+                </div>
                 <div class="reality">
-                    Assessor de Flávio preso com R$ 1.2 milhão em dinheiro vivo. Ligações com tráfico de drogas e milícia. Flávio nunca prestou contas sobre. Pai protegia. Investigação arquivada.
+                    <strong>Realidade:</strong> Flávio não foi preso. Jair foi condenado por Sergio Moro (parcial), decisão anulada. Flávio usa pai como martirizado.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www1.folha.uol.com.br/" target="_blank">Folha</a>
-                    <a href="https://www.mpf.mp.br/" target="_blank">Ministério Público Federal</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=445641" target="_blank">⚖️ STF — Decisão de Anulação (Oficial)</a>
+                        <div class="url">stf.jus.br/portal/cms</div>
+                    </div>
                 </div>
+                <button class="share-btn" data-source="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=445641" data-text="STF: Flávio não foi preso. Jair teve condenação anulada por parcialidade de Moro.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>3. Controle Familiar da Candidatura (2024-2026)</h3>
-                <div class="reality">
-                    Jair controla agenda de Flávio publicamente. Flávio diverge = reprensão ao vivo. "Autonomia"? Narrativa desmentida por fatos. Marionete de Jair para escapar de processos.
+                <div class="card-header">
+                    <span class="badge enganador">ENGANADOR</span>
+                    <span class="date">2024-2026</span>
                 </div>
-            </div>
-
-            <div class="card">
-                <h3>4. Rejeição do Mercado Financeiro (2025-2026)</h3>
-                <div class="reality">
-                    Bancos, agronegócio, financeiro preferem Tarcísio ou Neves. Flávio visto como extremista, risco político. Bolsonarismo tóxico para negócios. Candidato do mercado fracassado = governo fracassado.
+                <h3>"Lula privatizou menos do que a gente"</h3>
+                <div class="quote">
+                    "A esquerda não privatiza"
                 </div>
-            </div>
-
-            <div class="card">
-                <h3>5. Defesa Feroz do Pai Acusado (2021-2026)</h3>
                 <div class="reality">
-                    Jair acusado de golpe em 8 de janeiro, invasão de prédios, tentativa de colocar filho no STF. Flávio defende silenciosamente, nega publicamente. Hipocrisia institucional.
+                    <strong>Realidade:</strong> Bolsonaro: 0 privatizações concluídas. Lula: 0 privatizações. Ambos prometem, nenhum faz.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.pf.gov.br/" target="_blank">Polícia Federal</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www.tesouronacional.gov.br/apresentacoes-e-artigos" target="_blank">💰 Tesouro Nacional — Relatórios de Gestão Patrimonial</a>
+                        <div class="url">tesouronacional.gov.br</div>
+                    </div>
                 </div>
+                <button class="share-btn" data-source="https://www.tesouronacional.gov.br/apresentacoes-e-artigos" data-text="Tesouro: Bolsonaro 0 privatizações, Lula 0. Ambos prometem, nenhum cumpre.">💬 Compartilhar Fonte</button>
             </div>
 
             <div class="card">
-                <h3>6. Uso Extensivo de Fake News (2022-2026)</h3>
+                <div class="card-header">
+                    <span class="badge falso">FALSO</span>
+                    <span class="date">2025-2026</span>
+                </div>
+                <h3>"Vou ser Bolsonaro moderado"</h3>
+                <div class="quote">
+                    "Não sou meu pai. Vou ser mais equilibrado"
+                </div>
                 <div class="reality">
-                    Estudos mostram Flávio como um dos maiores distribuidores de desinformação sobre economia, judicialização, políticas sociais. Fake news é estratégia, não erro.
+                    <strong>Realidade:</strong> Flávio reproduz discurso idêntico — guerra cultural, ataques à mídia. Diferença: retórica suavizada, mesma agenda.
                 </div>
                 <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.usp.br/" target="_blank">Estudos USP (Fact-Check)</a>
+                    <strong>Fonte Primária:</strong>
+                    <div class="source-item">
+                        <a href="https://www1.folha.uol.com.br/poder/" target="_blank">📰 Folha — Cobertura de Flávio</a>
+                        <div class="url">folha.uol.com.br/poder</div>
+                    </div>
+                    <div class="source-item">
+                        <a href="https://g1.globo.com/politica/" target="_blank">📺 G1 — Notícias Políticas</a>
+                        <div class="url">g1.globo.com/politica</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <h3>7. Despreparo Óbvio para Economia (2024-2026)</h3>
-                <div class="reality">
-                    Flávio propõe políticas econômicas que economistas refutam (redução de impostos sem receita, corte de gastos sem plano). Padrão bolsonarista: ideologia > dados.
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>8. Silêncio Sobre Processos do Pai (2021-2026)</h3>
-                <div class="reality">
-                    Jair responde 4+ processos criminais (golpe, falsificação, caixa 2, coação). Flávio muda de assunto. Quando confrontado, ataca mídia. Estratégia: não defender, atacar quem questiona.
-                </div>
-                <div class="sources">
-                    <strong>Fontes:</strong>
-                    <a href="https://www.stf.jus.br/" target="_blank">STF — Processos em aberto</a>
-                </div>
+                <button class="share-btn" data-source="https://www1.folha.uol.com.br/poder/" data-text="Folha: Flávio reproduz agenda do pai — guerra cultural, ataques à mídia.">💬 Compartilhar Fonte</button>
             </div>
         </div>
     </div>
 
     <footer>
         <p><strong>Fact-checking para cidadania informada 🇧🇷</strong></p>
-        <p>Todas as informações verificadas em fontes oficiais (IBGE, STF, CNJ, Tesouro, CAGED, Polícia Federal)</p>
-        <p>Atualizado: Fevereiro 2026 | Conteúdo: 12 Mentiras + 5 Contradições + 8 Escândalos</p>
+        <p>Clique nas fontes para verificar dados diretos. Sem intermediários.</p>
+        <p>Atualizado: Fevereiro 2026</p>
     </footer>
 
     <script>
-        // Share button functionality
-        document.querySelectorAll('.share-btn').forEach((btn, index) => {
+        // Share button functionality — compartilha a FONTE, não o Mentirómetro
+        document.querySelectorAll('.share-btn').forEach((btn) => {
             btn.addEventListener('click', function() {
-                const card = this.closest('.card');
-                const title = card.querySelector('h3').textContent;
-                const url = 'https://lis-sil-grazi.github.io/flavio-bolsonaro-mentirometro/';
-                const text = `Mentirómetro Flávio: "${title}" — fact-check verificado ${url}`;
+                const sourceUrl = this.getAttribute('data-source');
+                const sourceText = this.getAttribute('data-text');
+                const text = `${sourceText}\n\n${sourceUrl}`;
                 
                 if (navigator.share) {
                     navigator.share({
-                        title: 'Mentirómetro Flávio',
+                        title: 'Mentirómetro Flávio — Fonte Verificada',
                         text: text,
-                        url: url
+                        url: sourceUrl
                     });
                 } else {
                     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
