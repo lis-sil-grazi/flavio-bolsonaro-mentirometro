@@ -24,6 +24,17 @@
             text-align: center;
         }
 
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 125px;
+        }
+
         header h1 {
             font-size: 3em;
             font-weight: 700;
@@ -247,13 +258,18 @@
 </head>
 <body>
     <header>
-        <div style="margin-bottom: 20px;">
-            <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" style="width: 100px; height: 125px; display: inline-block;">
-                <path d="M 80 15 L 130 45 L 130 110 C 130 155 80 190 80 190 C 80 190 30 155 30 110 L 30 45 Z" 
-                      fill="none" stroke="#228B22" stroke-width="2.5"/>
-                <line x1="35" y1="100" x2="125" y2="100" stroke="#FCD116" stroke-width="4"/>
-                <text x="80" y="125" font-size="72" font-weight="900" font-family="'Helvetica Neue', Arial, sans-serif" 
-                      text-anchor="middle" fill="#228B22">F</text>
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shield outline -->
+                <path d="M 80 20 L 140 50 L 140 120 C 140 165 80 195 80 195 C 80 195 20 165 20 120 L 20 50 Z" 
+                      fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+                
+                <!-- Yellow diagonal slash (false/crossed out) -->
+                <line x1="30" y1="90" x2="130" y2="110" stroke="#FCD116" stroke-width="5" stroke-linecap="round"/>
+                
+                <!-- Big F -->
+                <text x="80" y="150" font-size="80" font-weight="900" font-family="Helvetica, Arial, sans-serif" 
+                      text-anchor="middle" fill="#ffffff">F</text>
             </svg>
         </div>
         <h1>Mentirómetro Flávio</h1>
@@ -303,10 +319,6 @@
                         <a href="https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-pib-trimestral.html" target="_blank">📊 IBGE — PIB Trimestral</a>
                         <div class="url">ibge.gov.br/estatisticas/economicas/contas-nacionais</div>
                     </div>
-                    <div class="source-item">
-                        <a href="https://www.bcb.gov.br/publicacoes/relatorioeconomia/ultimas" target="_blank">📈 Banco Central — Relatório de Inflação</a>
-                        <div class="url">bcb.gov.br/publicacoes</div>
-                    </div>
                 </div>
                 <button class="share-btn" data-source="https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-pib-trimestral.html" data-text="IBGE: PIB Bolsonaro 1.1% aa vs Lula 4.6% aa">💬 Compartilhar Fonte</button>
             </div>
@@ -326,263 +338,11 @@
                 <div class="sources">
                     <strong>Fonte Primária:</strong>
                     <div class="source-item">
-                        <a href="https://www.gov.br/trabalho-e-renda/pt-br/caged" target="_blank">📋 CAGED — Cadastro Geral de Empregados (Oficial)</a>
+                        <a href="https://www.gov.br/trabalho-e-renda/pt-br/caged" target="_blank">📋 CAGED — Cadastro Geral de Empregados</a>
                         <div class="url">gov.br/trabalho-e-renda/caged</div>
                     </div>
-                    <div class="source-item">
-                        <a href="https://www.ibge.gov.br/estatisticas/sociais/populacao/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-mensal.html" target="_blank">📊 IBGE — PNAD Contínua (Desemprego)</a>
-                        <div class="url">ibge.gov.br/estatisticas/sociais/populacao/9173-pnad</div>
-                    </div>
                 </div>
-                <button class="share-btn" data-source="https://www.gov.br/trabalho-e-renda/pt-br/caged" data-text="CAGED: Desemprego 11.5% (2020) → 12.9% (2022) sob Bolsonaro">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2022-2026</span>
-                </div>
-                <h3>"Bolsonaro combateu a corrupção"</h3>
-                <div class="quote">
-                    "Meu pai foi mais rigoroso com corrupção que qualquer presidente"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro indicou ministros presos pós-mandato. Operação Lava Jato foi 2003-2010 (governo Lula), não Bolsonaro.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.cnj.jus.br/programas-e-acoes/operacao-lava-jato/" target="_blank">⚖️ CNJ — Operação Lava Jato (Dados Oficiais)</a>
-                        <div class="url">cnj.jus.br/programas-e-acoes/operacao-lava-jato</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://www1.folha.uol.com.br/poder/2022/07/bolsonaro-indicou-ministros-presos-apos-mandato.shtml" target="_blank">📰 Folha — Ministros de Bolsonaro Presos</a>
-                        <div class="url">folha.uol.com.br/poder</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.cnj.jus.br/programas-e-acoes/operacao-lava-jato/" data-text="CNJ: Lava Jato foi 2003-2010 (Lula), não Bolsonaro. Ministros de Bolsonaro presos.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2024-2026</span>
-                </div>
-                <h3>"Inflação foi culpa do Lula"</h3>
-                <div class="quote">
-                    "Inflação quando Lula saiu: 5%. Agora: 10%. Bolsonaro é culpado"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Inflação Bolsonaro 2019-2022: aumento de 180% (3.7% → 10.1%). Lula deixou 5% em 2010.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html" target="_blank">📊 IBGE — IPCA Mensal (Inflação Oficial)</a>
-                        <div class="url">ibge.gov.br/estatisticas/economicas/precos/9256-ipca</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://www.bcb.gov.br/controleinflacao/historicotaxasjuros" target="_blank">💹 Banco Central — Histórico de Taxas</a>
-                        <div class="url">bcb.gov.br/controleinflacao</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html" data-text="IBGE: Inflação Bolsonaro 3.7% (2019) → 10.1% (2022). Aumento de 180%.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge hipocrisia">HIPOCRISIA</span>
-                    <span class="date">2020-2026</span>
-                </div>
-                <h3>"Respeitamos a democracia"</h3>
-                <div class="quote">
-                    "Nunca atacamos instituições, apenas defendemos constituição"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro tentou golpe em 8 de janeiro (documentado por STF). Investigação oficial em andamento.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=468946" target="_blank">⚖️ STF — Investigação Golpe 8/Janeiro (Oficial)</a>
-                        <div class="url">stf.jus.br/portal/cms</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://www.pf.gov.br/noticias/noticias-2023/operacao-golpe-final" target="_blank">🔍 Polícia Federal — Relatório da Operação (Documento Oficial)</a>
-                        <div class="url">pf.gov.br/noticias</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=468946" data-text="STF: Investigação oficial sobre tentativa de golpe de Bolsonaro em 8/janeiro.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge enganador">ENGANADOR</span>
-                    <span class="date">2022-2026</span>
-                </div>
-                <h3>"Universidades foram doutrinadas pela esquerda"</h3>
-                <div class="quote">
-                    "Precisamos controlar currículo das universidades"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> ENEM mostra que Brasil tem **mais alunos em cursos de direita** (Administração, Engenharia) que esquerda.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.inep.gov.br/estatisticas-educacionais" target="_blank">📊 INEP — Estatísticas do ENEM (Oficial)</a>
-                        <div class="url">inep.gov.br/estatisticas-educacionais</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.inep.gov.br/estatisticas-educacionais" data-text="INEP: Mais alunos em Administração/Engenharia que Humanidades. Dados refutam doutrinação.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2022-2026</span>
-                </div>
-                <h3>"Bolsonaro melhorou a vida das mulheres"</h3>
-                <div class="quote">
-                    "Governo anterior cortou programas femininos, nós mantemos"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro cortou 38% dos gastos com programas de mulheres. Violência contra mulher cresceu 44%.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.gov.br/mdh/pt-br/acesso-a-informacao/acoes-e-programas/direitos-das-mulheres" target="_blank">📋 MDH — Programas de Mulheres (Orçamento Oficial)</a>
-                        <div class="url">gov.br/mdh/direitos-das-mulheres</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://www.ipea.gov.br/" target="_blank">📊 IPEA — Atlas da Violência</a>
-                        <div class="url">ipea.gov.br/atlas-violencia</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.ipea.gov.br/" data-text="IPEA: Violência contra mulher cresceu 44% sob Bolsonaro. Cortes de 38% em programas.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2024</span>
-                </div>
-                <h3>"Desfile de 7 de setembro usou apenas dinheiro de impostos"</h3>
-                <div class="quote">
-                    "Nenhuma verba de lei Rouanet, tudo do governo"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Lei Rouanet = deduções de IR (é dinheiro público). Semântica = confusão intencional.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.gov.br/cultura/pt-br/acesso-a-informacao/acoes-e-programas/lei-rouanet" target="_blank">📋 MinC — Lei Rouanet (Oficial)</a>
-                        <div class="url">gov.br/cultura/lei-rouanet</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://www.folha.uol.com.br/cultura/2024/09/desfile-bolsonaro.shtml" target="_blank">📰 Folha — Desfile 7 de Setembro (Reportagem)</a>
-                        <div class="url">folha.uol.com.br/cultura</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.gov.br/cultura/pt-br/acesso-a-informacao/acoes-e-programas/lei-rouanet" data-text="MinC: Lei Rouanet = deduções de IR = dinheiro público.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge enganador">ENGANADOR</span>
-                    <span class="date">2021-2026</span>
-                </div>
-                <h3>"Segurança foi melhor com Bolsonaro"</h3>
-                <div class="quote">
-                    "Reduzimos crime, homicídios caíram"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Homicídios caíram (57.956 → 49.853), MAS roubo aumentou, crime organizado cresceu. Segurança é complexa.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.gov.br/mj/pt-br/acesso-a-informacao" target="_blank">📊 Ministério da Justiça — Dados de Segurança</a>
-                        <div class="url">gov.br/mj/acesso-a-informacao</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://www.ipea.gov.br/atlasviolencia/dados-detalhados-do-atlas.html" target="_blank">📈 IPEA — Atlas da Violência (Detalhado)</a>
-                        <div class="url">ipea.gov.br/atlasviolencia</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.ipea.gov.br/atlasviolencia/dados-detalhados-do-atlas.html" data-text="IPEA: Homicídios caíram MAS crime organizado cresceu. Segurança complexa.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge hipocrisia">HIPOCRISIA</span>
-                    <span class="date">2025-2026</span>
-                </div>
-                <h3>"Fui preso injustamente pela ditadura STF"</h3>
-                <div class="quote">
-                    "Sou vítima de perseguição política"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Flávio não foi preso. Jair foi condenado por Sergio Moro (parcial), decisão anulada. Flávio usa pai como martirizado.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=445641" target="_blank">⚖️ STF — Decisão de Anulação (Oficial)</a>
-                        <div class="url">stf.jus.br/portal/cms</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=445641" data-text="STF: Flávio não foi preso. Jair teve condenação anulada por parcialidade de Moro.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge enganador">ENGANADOR</span>
-                    <span class="date">2024-2026</span>
-                </div>
-                <h3>"Lula privatizou menos do que a gente"</h3>
-                <div class="quote">
-                    "A esquerda não privatiza"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Bolsonaro: 0 privatizações concluídas. Lula: 0 privatizações. Ambos prometem, nenhum faz.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www.tesouronacional.gov.br/apresentacoes-e-artigos" target="_blank">💰 Tesouro Nacional — Relatórios de Gestão Patrimonial</a>
-                        <div class="url">tesouronacional.gov.br</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www.tesouronacional.gov.br/apresentacoes-e-artigos" data-text="Tesouro: Bolsonaro 0 privatizações, Lula 0. Ambos prometem, nenhum cumpre.">💬 Compartilhar Fonte</button>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge falso">FALSO</span>
-                    <span class="date">2025-2026</span>
-                </div>
-                <h3>"Vou ser Bolsonaro moderado"</h3>
-                <div class="quote">
-                    "Não sou meu pai. Vou ser mais equilibrado"
-                </div>
-                <div class="reality">
-                    <strong>Realidade:</strong> Flávio reproduz discurso idêntico — guerra cultural, ataques à mídia. Diferença: retórica suavizada, mesma agenda.
-                </div>
-                <div class="sources">
-                    <strong>Fonte Primária:</strong>
-                    <div class="source-item">
-                        <a href="https://www1.folha.uol.com.br/poder/" target="_blank">📰 Folha — Cobertura de Flávio</a>
-                        <div class="url">folha.uol.com.br/poder</div>
-                    </div>
-                    <div class="source-item">
-                        <a href="https://g1.globo.com/politica/" target="_blank">📺 G1 — Notícias Políticas</a>
-                        <div class="url">g1.globo.com/politica</div>
-                    </div>
-                </div>
-                <button class="share-btn" data-source="https://www1.folha.uol.com.br/poder/" data-text="Folha: Flávio reproduz agenda do pai — guerra cultural, ataques à mídia.">💬 Compartilhar Fonte</button>
+                <button class="share-btn" data-source="https://www.gov.br/trabalho-e-renda/pt-br/caged" data-text="CAGED: Desemprego 11.5% (2020) → 12.9% (2022)">💬 Compartilhar Fonte</button>
             </div>
         </div>
     </div>
@@ -594,7 +354,6 @@
     </footer>
 
     <script>
-        // Share button functionality — compartilha a FONTE, não o Mentirómetro
         document.querySelectorAll('.share-btn').forEach((btn) => {
             btn.addEventListener('click', function() {
                 const sourceUrl = this.getAttribute('data-source');
