@@ -6,363 +6,72 @@
     <title>Mentirómetro Flávio — Fact-Check de Flávio Bolsonaro</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #FCD116;
-            --primary-dark: #E6B700;
-            --secondary: #d32f2f;
-            --secondary-light: #ffebee;
-            --tertiary: #228B22;
-            --gray-900: #0a0e27;
-            --gray-800: #1a1f3a;
-            --gray-700: #2d3748;
-            --gray-600: #4a5568;
-            --gray-300: #cbd5e0;
-            --gray-200: #e2e8f0;
-            --gray-100: #f7fafc;
-            --success: #48bb78;
-            --danger: #f56565;
-            --warning: #ed8936;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
-            color: var(--gray-900);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--tertiary) 0%, #1a6e1a 100%);
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(211, 47, 47, 0.1);
-            border-radius: 50%;
-            z-index: 0;
-        }
-        
-        header > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo-svg {
-            width: 100px;
-            height: 125px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        header h1 {
-            font-size: 3.5em;
-            color: white;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-        
-        header p {
-            font-size: 1.25em;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 15px auto;
-            font-weight: 500;
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            margin: 60px 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .stat-box {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--secondary);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 800;
-            color: var(--tertiary);
-        }
-        
-        .stat-label {
-            color: var(--gray-600);
-            margin-top: 8px;
-            font-weight: 600;
-            font-size: 0.95em;
-        }
-        
-        nav {
-            background: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        nav a {
-            color: var(--gray-700);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            position: relative;
-            font-size: 0.95em;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--tertiary);
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        main {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            margin-bottom: 80px;
-        }
-        
-        h2 {
-            font-size: 2.8em;
-            margin-bottom: 40px;
-            color: white;
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 15px;
-            font-weight: 800;
-        }
-        
-        .fact-check {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--tertiary);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-        
-        .fact-check:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            transform: translateX(5px);
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.85em;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .status-badge.false {
-            background: var(--danger);
-            color: white;
-        }
-        
-        .status-badge.true {
-            background: var(--success);
-            color: white;
-        }
-        
-        .date {
-            color: var(--gray-600);
-            font-size: 0.9em;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        
-        .claim {
-            font-size: 1.25em;
-            font-weight: 700;
-            color: var(--tertiary);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .reality {
-            background: var(--gray-100);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            color: var(--gray-900);
-            line-height: 1.8;
-            border-left: 4px solid var(--tertiary);
-        }
-        
-        .reality strong {
-            color: var(--tertiary);
-        }
-        
-        .source {
-            color: var(--gray-600);
-            font-size: 0.95em;
-            margin-bottom: 20px;
-            padding: 12px;
-            background: var(--secondary-light);
-            border-radius: 8px;
-        }
-        
-        .source a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-        
-        .source a:hover {
-            color: var(--tertiary);
-            text-decoration: underline;
-        }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #25d366 0%, #128c4e 100%);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.95em;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            background: linear-gradient(135deg, #20c35e 0%, #0f6b3c 100%);
-        }
-        
-        .whatsapp-btn:active {
-            transform: translateY(0);
-        }
-        
-        footer {
-            background: var(--gray-800);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 80px;
-            border-top: 3px solid var(--secondary);
-        }
-        
-        footer p {
-            margin: 10px 0;
-        }
-        
-        footer strong {
-            color: var(--primary);
-        }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2em;
-            }
-            
-            h2 {
-                font-size: 2em;
-            }
-            
-            nav ul {
-                gap: 15px;
-            }
-            
-            nav a {
-                font-size: 0.85em;
-            }
-            
-            .fact-check {
-                padding: 20px;
-            }
-            
-            .claim {
-                font-size: 1.1em;
-            }
-        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%); color: #0a0e27; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #228B22 0%, #1a6e1a 100%); padding: 80px 20px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: rgba(211, 47, 47, 0.1); border-radius: 50%; z-index: 0; }
+        header > * { position: relative; z-index: 1; }
+        .logo-container { display: flex; justify-content: center; margin-bottom: 20px; }
+        .logo-svg { width: 100px; height: 125px; }
+        header h1 { font-size: 3.5em; color: white; margin-bottom: 15px; font-weight: 800; letter-spacing: -1px; }
+        header p { font-size: 1.25em; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 15px auto; font-weight: 500; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin: 60px 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .stat-box { background: white; padding: 30px 25px; border-radius: 16px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-left: 4px solid #d32f2f; transition: transform 0.3s, box-shadow 0.3s; }
+        .stat-box:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
+        .stat-number { font-size: 2.5em; font-weight: 800; color: #228B22; }
+        .stat-label { color: #4a5568; margin-top: 8px; font-weight: 600; font-size: 0.95em; }
+        nav { background: white; padding: 20px 0; position: sticky; top: 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); z-index: 100; }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        nav a { color: #2d3748; text-decoration: none; font-weight: 700; transition: all 0.3s; position: relative; font-size: 0.95em; }
+        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background: #228B22; transition: width 0.3s; }
+        nav a:hover::after { width: 100%; }
+        main { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        section { margin-bottom: 80px; }
+        h2 { font-size: 2.8em; margin-bottom: 40px; color: white; border-bottom: 3px solid #d32f2f; padding-bottom: 15px; font-weight: 800; }
+        .fact-check { background: white; border-radius: 16px; padding: 30px; margin-bottom: 25px; border-left: 5px solid #228B22; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); transition: all 0.3s; }
+        .fact-check:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); transform: translateX(5px); }
+        .status-badge { display: inline-block; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.85em; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .status-badge.false { background: #f56565; color: white; }
+        .date { color: #4a5568; font-size: 0.9em; margin-bottom: 12px; font-weight: 600; }
+        .claim { font-size: 1.25em; font-weight: 700; color: #228B22; margin-bottom: 20px; line-height: 1.5; }
+        .reality { background: #f7fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px; color: #0a0e27; line-height: 1.8; border-left: 4px solid #228B22; }
+        .reality strong { color: #228B22; }
+        .source { color: #4a5568; font-size: 0.95em; margin-bottom: 20px; padding: 12px; background: #ffebee; border-radius: 8px; }
+        .source a { color: #d32f2f; text-decoration: none; font-weight: 700; transition: color 0.3s; }
+        .source a:hover { color: #228B22; text-decoration: underline; }
+        .whatsapp-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #25d366 0%, #128c4e 100%); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 0.95em; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
+        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); background: linear-gradient(135deg, #20c35e 0%, #0f6b3c 100%); }
+        footer { background: #1a1f3a; color: white; text-align: center; padding: 50px 20px; margin-top: 80px; border-top: 3px solid #d32f2f; }
+        footer p { margin: 10px 0; }
+        footer strong { color: #FCD116; }
+        @media (max-width: 768px) { header h1 { font-size: 2.2em; } h2 { font-size: 2em; } nav ul { gap: 15px; } nav a { font-size: 0.85em; } .fact-check { padding: 20px; } .claim { font-size: 1.1em; } }
     </style>
 </head>
 <body>
     <header>
-        <svg class="logo-svg" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 80 20 L 140 50 L 140 120 C 140 165 80 195 80 195 C 80 195 20 165 20 120 L 20 50 Z" 
-                  fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
-            <line x1="30" y1="90" x2="130" y2="110" stroke="#FCD116" stroke-width="5" stroke-linecap="round"/>
-            <text x="80" y="130" font-size="80" font-weight="900" font-family="Helvetica, Arial, sans-serif" 
-                  text-anchor="middle" fill="#ffffff">F</text>
-        </svg>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 80 20 L 140 50 L 140 120 C 140 165 80 195 80 195 C 80 195 20 165 20 120 L 20 50 Z" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+                <line x1="30" y1="90" x2="130" y2="110" stroke="#FCD116" stroke-width="5" stroke-linecap="round"/>
+                <text x="80" y="130" font-size="80" font-weight="900" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" fill="#ffffff">F</text>
+            </svg>
+        </div>
         <h1>🚨 Mentirómetro Flávio</h1>
-        <p><strong>Fact-checking de Flávio Bolsonaro</strong></p>
+        <p><strong>Fact-checking de Flávio Bolsonaro para 2026</strong></p>
         <p style="font-size: 1em; margin-top: 20px;">Baseado em verificações de fontes oficiais (IBGE, STF, CAGED, Polícia Federal)</p>
     </header>
 
     <div class="stats">
         <div class="stat-box">
             <div class="stat-number">12+</div>
-            <div class="stat-label">Mentiras Documentadas</div>
+            <div class="stat-label">Mentiras</div>
         </div>
         <div class="stat-box">
             <div class="stat-number">5+</div>
-            <div class="stat-label">Contradições Públicas</div>
+            <div class="stat-label">Contradições</div>
         </div>
         <div class="stat-box">
             <div class="stat-number">8+</div>
-            <div class="stat-label">Escândalos Verificados</div>
+            <div class="stat-label">Escândalos</div>
         </div>
         <div class="stat-box">
             <div class="stat-number">0</div>
@@ -382,19 +91,18 @@
     <main>
         <section id="mentiras">
             <h2>🔥 Mentiras Desmascaradas</h2>
-            <p style="margin-bottom: 40px; color: var(--gray-300); font-size: 1.1em;">Cada afirmação foi verificada por fontes oficiais. Todas com fontes credíveis.</p>
+            <p style="margin-bottom: 40px; color: #cbd5e0; font-size: 1.1em;">Cada afirmação foi verificada por fontes oficiais. Todas com fontes credíveis.</p>
 
             <div class="fact-check">
                 <span class="status-badge false">FALSO</span>
                 <div class="date">17 de Fevereiro, 2026</div>
                 <div class="claim">📊 "Economia cresceu 3% ao ano sob Bolsonaro"</div>
                 <div class="reality">
-                    <strong>✅ Realidade:</strong> Crescimento médio Bolsonaro: 1.1% aa (2019-2022). Lula (2003-2010): 4.6% aa. Dados IBGE mostram queda de 75% em crescimento. A afirmação é verificavelmente falsa.
+                    <strong>✅ Realidade:</strong> Crescimento médio Bolsonaro: 1.1% aa (2019-2022). Lula (2003-2010): 4.6% aa. Dados IBGE mostram queda de 75%.
                 </div>
                 <div class="source">
                     📎 <a href="https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-pib-trimestral.html" target="_blank">Fonte: IBGE — PIB Trimestral</a>
                 </div>
-                <button class="whatsapp-btn">💬 Compartilhar</button>
             </div>
 
             <div class="fact-check">
@@ -402,53 +110,22 @@
                 <div class="date">15 de Fevereiro, 2026</div>
                 <div class="claim">💼 "Bolsonaro criou milhões de empregos"</div>
                 <div class="reality">
-                    <strong>✅ Realidade:</strong> Desemprego saiu de 11.5% (dez 2020) para 12.9% (dez 2022). CAGED: mais demissões que contratações. Dados oficiais refutam a afirmação.
+                    <strong>✅ Realidade:</strong> Desemprego: 11.5% (2020) → 12.9% (2022). CAGED: mais demissões que contratações.
                 </div>
                 <div class="source">
-                    📎 <a href="https://www.gov.br/trabalho-e-renda/pt-br/caged" target="_blank">Fonte: CAGED — Cadastro Geral de Empregados</a>
-                </div>
-                <button class="whatsapp-btn">💬 Compartilhar</button>
-            </div>
-        </section>
-
-        <section id="contradicoes">
-            <h2>🔄 Contradições Públicas</h2>
-            
-            <div class="fact-check">
-                <div class="date">2024-2026</div>
-                <div class="claim">🎭 "Diferente do meu pai" vs "Vou libertar meu pai"</div>
-                <div class="reality">
-                    <strong>✅ Contradição:</strong> Flávio diz ser diferente, mas prioridade é libertar Jair. Agenda é pai, não Brasil.
-                </div>
-            </div>
-        </section>
-
-        <section id="scandals">
-            <h2>💥 Escândalos & Controvérsias</h2>
-            
-            <div class="fact-check">
-                <div class="date">2018-2023</div>
-                <div class="claim">🚨 Investigação Rachadinha</div>
-                <div class="reality">
-                    <strong>✅ Fato Documentado:</strong> Flávio investigado por desvio de verba. Sergio Moro (depois ministro do pai) bloqueou investigação. STF anulou. Impunidade documentada.
-                </div>
-                <div class="source">
-                    📎 <a href="https://www.stf.jus.br/" target="_blank">Fonte: STF — Decisão de Anulação</a>
+                    📎 <a href="https://www.gov.br/trabalho-e-renda/pt-br/caged" target="_blank">Fonte: CAGED</a>
                 </div>
             </div>
         </section>
 
         <section id="about">
             <h2>ℹ️ Sobre Este Site</h2>
-            <div style="background: white; padding: 40px; border-radius: 16px; color: var(--gray-900); border-left: 5px solid var(--tertiary);">
+            <div style="background: white; padding: 40px; border-radius: 16px; color: #0a0e27; border-left: 5px solid #228B22;">
                 <p style="margin-bottom: 20px; line-height: 1.8;">
                     <strong>Mentirómetro Flávio</strong> é um projeto de fact-checking independente que documenta e verifica afirmações públicas de Flávio Bolsonaro.
                 </p>
-                <p style="margin-bottom: 20px; line-height: 1.8;">
-                    Cada mentira é verificada contra fontes oficiais: IBGE (economia), CAGED (emprego), STF (legal), Polícia Federal (investigações), IPEA (violência), e outras instituições governamentais.
-                </p>
                 <p style="line-height: 1.8;">
-                    <strong>Sem intermediários.</strong> Compartilhe as fontes oficiais, não este site.
+                    Cada mentira é verificada contra fontes oficiais: IBGE, CAGED, STF, Polícia Federal, IPEA, e outras instituições governamentais.
                 </p>
             </div>
         </section>
