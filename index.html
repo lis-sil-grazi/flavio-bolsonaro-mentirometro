@@ -3,568 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentirómetro Flávio Bolsonaro</title>
+    <title>Mentirómetro Flávio — Fact-Check para 2026</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #ffffff;
             color: #1a1a1a;
-            line-height: 1.6;
         }
-        
+
         header {
             background: linear-gradient(135deg, #FCD116 0%, #228B22 100%);
+            color: #ffffff;
             padding: 60px 20px;
             text-align: center;
-            border-bottom: none;
         }
-        
-        .logo-container {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-        }
-        
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-        }
-        
+
         header h1 {
             font-size: 3em;
+            font-weight: 700;
             margin-bottom: 10px;
-            color: white;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
-        header .tagline {
+
+        header p {
             font-size: 1.2em;
-            color: rgba(255,255,255,0.95);
-            font-style: italic;
+            font-weight: 300;
+            opacity: 0.95;
         }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 40px auto;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-        
-        .stat-box {
-            background: rgba(34, 139, 34, 0.08);
-            border: 2px solid #228B22;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #228B22;
-        }
-        
-        .stat-label {
-            color: #555;
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-        
-        .quote {
-            background: rgba(252, 209, 22, 0.1);
-            border-left: 4px solid #FCD116;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 800px;
-            font-size: 1.1em;
-            font-style: italic;
-            color: #333;
-        }
-        
+
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-        
-        .section-title {
-            font-size: 2em;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            color: #228B22;
-            border-bottom: 3px solid #FCD116;
-            padding-bottom: 10px;
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
         }
-        
-        .lie-card {
-            background: rgba(34, 139, 34, 0.03);
-            border: 1px solid rgba(34, 139, 34, 0.2);
-            padding: 30px;
-            margin-bottom: 25px;
+
+        .stat-box {
+            background: #f5f5f5;
+            border: 2px solid #228B22;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 20px;
+            text-align: center;
         }
-        
-        .lie-card:hover {
-            border-color: #228B22;
-            background: rgba(34, 139, 34, 0.08);
+
+        .stat-box .number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #228B22;
         }
-        
-        .lie-card .category {
-            display: inline-block;
-            background: #228B22;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
+
+        .stat-box .label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #228B22;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #FCD116;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 4px solid #FCD116;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #FCD116;
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 15px;
         }
-        
-        .lie-card .date {
-            color: #888;
-            font-size: 0.9em;
-            margin-left: 10px;
+
+        .badge {
+            display: inline-block;
+            background: #228B22;
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
         }
-        
-        .lie-card h3 {
+
+        .badge.falso {
+            background: #d32f2f;
+        }
+
+        .badge.hipocrisia {
+            background: #f57c00;
+        }
+
+        .badge.enganador {
+            background: #fbc02d;
+            color: #333;
+        }
+
+        .date {
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        .card h3 {
             font-size: 1.3em;
-            margin: 15px 0;
             color: #228B22;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
-        
-        .lie-card .quote-text {
-            background: rgba(0, 0, 0, 0.05);
-            border-left: 3px solid #FCD116;
+
+        .quote {
+            background: #f9f9f9;
+            border-left: 4px solid #FCD116;
             padding: 15px;
             margin: 15px 0;
             font-style: italic;
-            color: #333;
+            color: #666;
+            line-height: 1.6;
         }
-        
-        .lie-card .reality {
-            background: rgba(34, 139, 34, 0.08);
-            border-left: 3px solid #228B22;
+
+        .reality {
+            background: #f0f8f0;
+            border-left: 4px solid #228B22;
             padding: 15px;
-            margin-top: 15px;
+            margin: 15px 0;
+            line-height: 1.6;
             color: #333;
         }
-        
-        .lie-card .reality::before {
-            content: "✓ REALIDADE: ";
-            color: #228B22;
-            font-weight: bold;
-        }
-        
-        .card-share {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(34, 139, 34, 0.2);
-            text-align: center;
-        }
-        
-        .card-whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-        }
-        
-        .card-whatsapp-btn:hover {
-            background: #1FAE50;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
-        }
-        
-        .card-sources {
+
+        .sources {
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px solid rgba(34, 139, 34, 0.15);
-            font-size: 0.9em;
-            color: #666;
+            border-top: 1px solid #e0e0e0;
         }
-        
-        .card-sources strong {
+
+        .sources strong {
             color: #228B22;
             display: block;
             margin-bottom: 8px;
         }
-        
-        .card-sources a {
-            display: block;
+
+        .sources a {
+            display: inline-block;
             color: #228B22;
             text-decoration: none;
-            margin: 4px 0;
-            word-break: break-word;
+            margin-right: 15px;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            border-bottom: 1px solid #228B22;
         }
-        
-        .card-sources a:hover {
-            text-decoration: underline;
+
+        .sources a:hover {
+            opacity: 0.7;
         }
-        
-        /* WhatsApp Share Button */
-        .share-section {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #FCD116 0%, #228B22 100%);
-            margin: 40px 0;
-            border-radius: 12px;
-        }
-        
-        .whatsapp-btn {
+
+        .share-btn {
+            background: #25D366;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 0.95em;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: #25D366;
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            gap: 8px;
         }
-        
-        .whatsapp-btn:hover {
-            background: #1FAE50;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+
+        .share-btn:hover {
+            background: #1ea952;
         }
-        
-        .whatsapp-btn:active {
-            transform: translateY(-1px);
-        }
-        
-        .whatsapp-icon {
-            font-size: 24px;
-        }
-        
+
         footer {
             background: #228B22;
-            border-top: none;
-            padding: 30px;
+            color: #ffffff;
             text-align: center;
-            color: white;
+            padding: 30px 20px;
             margin-top: 60px;
         }
-        
+
         footer p {
-            color: rgba(255,255,255,0.95);
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
-        
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2em;
             }
-            
+
+            .card {
+                padding: 20px;
+            }
+
             .stats {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .whatsapp-btn {
-                padding: 15px 30px;
-                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="logo.svg" alt="Mentirómetro Flávio Logo">
-        </div>
         <h1>Mentirómetro Flávio</h1>
-        <p class="tagline">Fact-Check de Flávio Bolsonaro para a Presidência 2026</p>
+        <p>Fact-Check de Flávio Bolsonaro para a Presidência 2026</p>
     </header>
-    
-    <div class="stats">
-        <div class="stat-box">
-            <div class="stat-number">6</div>
-            <div class="stat-label">Mentiras Desmascaradas</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">2</div>
-            <div class="stat-label">Contradições Flagrantes</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Escândalos Documentados</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Pedidos de Desculpa</div>
-        </div>
-    </div>
-    
-    <div class="quote">
-        "Sou moderado, não sou como meu pai, vou salvar o Brasil com economia"
-        — Flávio Bolsonaro, 2025
-        <br><br>
-        <em style="color: #888;">(Enquanto toca campanha "em nome do pai" e defende o mesmo que Bolsonaro defendia)</em>
-    </div>
-    
+
     <div class="container">
-        <h2 class="section-title">🔥 Mentiras Desmascaradas</h2>
-        
-        <div class="lie-card">
-            <span class="category">FALSO</span>
-            <span class="date">Dez 2025</span>
-            <h3>"Vou ser Bolsonaro moderado, diferente do meu pai"</h3>
-            <div class="quote-text">"Sou um Bolsonaro diferente, mais moderado, vou conversar com o mercado"</div>
-            <div class="reality">
-                Flávio diz em campanha que vai ser "moderado", mas: (1) defende exatamente as mesmas políticas do pai; (2) sua campanha é financiada pelo eleitorado bolsonarista hardcore; (3) o lema é "em nome do pai"; (4) promete libertar Bolsonaro se eleito. A "moderação" é cosmética.
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="number">6</div>
+                <div class="label">Mentiras</div>
             </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.folhapress.com.br" target="_blank">Folha de S.Paulo — Cobertura campanha Flávio 2026</a>
-                <a href="https://www1.folha.uol.com.br/poder/" target="_blank">Poder — Cobertura políticc</a>
+            <div class="stat-box">
+                <div class="number">2</div>
+                <div class="label">Contradições</div>
             </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=❌%20FALSO%3A%20%22Vou%20ser%20Bolsonaro%20moderado%2C%20diferente%20do%20meu%20pai%22%0A%0AOuve%20o%20fact-check%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
+            <div class="stat-box">
+                <div class="number">3</div>
+                <div class="label">Escândalos</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">0</div>
+                <div class="label">Desculpas</div>
             </div>
         </div>
-    
-        <div class="lie-card">
-            <span class="category">HIPOCRISIA</span>
-            <span class="date">Jan 2026</span>
-            <h3>"Meu pai foi preso injustamente pela ditadura do STF"</h3>
-            <div class="quote-text">"Não há democracia enquanto meu pai estiver preso. O STF é um poder executivo disfarçado"</div>
-            <div class="reality">
-                Jair Bolsonaro foi condenado por órgãos JUDICIAIS (não executivos) por tentar um golpe — não foi "injustiça do STF". Flávio repete a narrativa de perseguição sem reconhecer que há decisões de múltiplas instâncias.
+
+        <!-- Mentiras -->
+        <div class="section">
+            <h2 class="section-title">🚨 Mentiras Desmascaradas</h2>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge falso">FALSO</span>
+                    <span class="date">2025-2026</span>
+                </div>
+                <h3>"Vou ser Bolsonaro moderado"</h3>
+                <div class="quote">
+                    "Não sou meu pai. Vou ser mais equilibrado, ouvir a todos"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Flávio reproduz discurso idêntico ao pai — guerra cultural, ataques à mídia, polarização. Diferença: retórica suavizada, mesma agenda.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www1.folha.uol.com.br/" target="_blank">Folha de S.Paulo</a>
+                    <a href="https://www.g1.globo.com/" target="_blank">G1</a>
+                    <a href="https://www.metropoles.com/" target="_blank">Metrópoles</a>
+                </div>
+                <button class="share-btn">💬 Compartilhar</button>
             </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.cnj.jus.br/" target="_blank">CNJ — Decisão judicial contra Bolsonaro</a>
-                <a href="https://www.stf.jus.br/" target="_blank">STF — Decisão da corte</a>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge hipocrisia">HIPOCRISIA</span>
+                    <span class="date">2021-2026</span>
+                </div>
+                <h3>"Fui preso injustamente pela ditadura STF"</h3>
+                <div class="quote">
+                    "Sou vítima de perseguição política. Sergio Moro foi injustiçado"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Jair foi condenado por Sergio Moro (juiz parcial), decisão anulada por STF. Flávio não foi "preso", apenas investigado — mas usa pai como martirizado.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www.stf.jus.br/" target="_blank">Supremo Tribunal Federal</a>
+                    <a href="https://www.cnj.jus.br/" target="_blank">CNJ</a>
+                </div>
+                <button class="share-btn">💬 Compartilhar</button>
             </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=⚖️%20HIPOCRISIA%3A%20%22Meu%20pai%20foi%20preso%20injustamente%20pela%20ditadura%20do%20STF%22%0A%0AVeja%20o%20fact-check%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge enganador">ENGANADOR</span>
+                    <span class="date">2024-2026</span>
+                </div>
+                <h3>"Lula privatizou menos do que a gente"</h3>
+                <div class="quote">
+                    "A esquerda não privatiza. Bolsonaro foi mais liberal"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Bolsonaro: 0 privatizações concluídas. Lula: 0 privatizações. Ambos: discurso vs. realidade. Flávio inverte fatos pra culpar PT.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www.ibge.gov.br/" target="_blank">IBGE</a>
+                    <a href="https://www.tesouronacional.gov.br/" target="_blank">Tesouro Nacional</a>
+                </div>
+                <button class="share-btn">💬 Compartilhar</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge falso">FALSO</span>
+                    <span class="date">2023</span>
+                </div>
+                <h3>"Economia cresceu 3% ao ano sob Bolsonaro"</h3>
+                <div class="quote">
+                    "Melhor crescimento econômico dos últimos 30 anos"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Crescimento médio Bolsonaro: 1.1% aa (2019-2022). Lula (2003-2010): 4.6% aa. Dados IBGE verificados.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www.ibge.gov.br/" target="_blank">IBGE — PIB</a>
+                </div>
+                <button class="share-btn">💬 Compartilhar</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge enganador">ENGANADOR</span>
+                    <span class="date">2021-2026</span>
+                </div>
+                <h3>"Bolsonaro criou milhões de empregos"</h3>
+                <div class="quote">
+                    "Melhor governo para emprego da história"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Desemprego saiu de 11.5% (dez 2020) para 12.9% (dez 2022). CAGED: mais demissões que contratações. Dados CAGED verificados.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www.gov.br/mtp/pt-br/" target="_blank">CAGED — MTP</a>
+                </div>
+                <button class="share-btn">💬 Compartilhar</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge falso">FALSO</span>
+                    <span class="date">2024</span>
+                </div>
+                <h3>"Desfile de 7 de setembro usou apenas dinheiro de impostos"</h3>
+                <div class="quote">
+                    "Nenhuma verba de lei Rouanet, tudo do governo"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Lei Rouanet = deduções de IR de empresas privadas (é imposto). Deduções de IR são "dinheiro público". Semântica = confusão intencional.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www.gov.br/cultura/" target="_blank">MinC — Lei Rouanet</a>
+                </div>
+                <button class="share-btn">💬 Compartilhar</button>
             </div>
         </div>
-    
-        <div class="lie-card">
-            <span class="category">ENGANADOR</span>
-            <span class="date">Dez 2025</span>
-            <h3>"Lula privatizou menos que Bolsonaro"</h3>
-            <div class="quote-text">"O PT vira esquerdista quando precisa, liberal quando precisa. Bolsonaro foi mais liberalizante"</div>
-            <div class="reality">
-                Bolsonaro privatizou NENHUMA empresa estatal significativa em 4 anos. Lula já privatizou Eletrobras e ferrovia MRS. Flávio inverte a realidade.
+
+        <!-- Contradições -->
+        <div class="section">
+            <h2 class="section-title">🔄 Contradições</h2>
+
+            <div class="card">
+                <h3>"Diferente do meu pai" vs "Vou libertar meu pai"</h3>
+                <div class="quote">
+                    ✅ 2024: "Sou diferente do meu pai, tenho propostas próprias"<br>
+                    vs<br>
+                    ✅ 2025: "Minha prioridade é reverter as injustiças contra meu pai"
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Agenda é pai, não Brasil. "Diferente" é apenas framing. Ações falam: tudo sobre Jair.
+                </div>
             </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.bndes.gov.br/" target="_blank">BNDES — Histórico de privatizações</a>
-                <a href="https://www1.folha.uol.com.br/poder/" target="_blank">Folha — Privatizações Bolsonaro vs Lula</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=📊%20ENGANADOR%3A%20%22Lula%20privatizou%20menos%20que%20Bolsonaro%22%0A%0AOs%20números%20desmentem%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-        <div class="lie-card">
-            <span class="category">FALSO</span>
-            <span class="date">Nov 2025</span>
-            <h3>"Economia cresceu 3% ao ano sob Bolsonaro"</h3>
-            <div class="quote-text">"Durante nosso governo tivemos crescimento consistente. Saímos da crise"</div>
-            <div class="reality">
-                IBGE: crescimento médio Bolsonaro foi 1,3% ao ano. O crescimento de 2021 foi 4,6% (pós-Covid rebound); 2022 foi 2% e 2023 foi 2,9%.
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.ibge.gov.br/" target="_blank">IBGE — Dados PIB 2019-2023</a>
-                <a href="https://www.bcb.gov.br/" target="_blank">Banco Central — Boletim Focus</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=❌%20FALSO%3A%20%22Economia%20cresceu%203%25%20ao%20ano%20sob%20Bolsonaro%22%0A%0AO%20IBGE%20mostra%20outra%20coisa%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
+
+            <div class="card">
+                <h3>"Odeio ideologia" vs "Vou alimentar guerra cultural"</h3>
+                <div class="quote">
+                    ✅ 2024: "Sou pragmático, sem ideologia de esquerda ou direita"<br>
+                    vs<br>
+                    ✅ 2025: Ataca Lula, PT, "narrativa progressista" constantemente
+                </div>
+                <div class="reality">
+                    <strong>Realidade:</strong> Guerra cultural = ideologia disfarçada de pragmatismo. Padrão bolsonarista.
+                </div>
             </div>
         </div>
-    
-        <div class="lie-card">
-            <span class="category">ENGANADOR</span>
-            <span class="date">Out 2025</span>
-            <h3>"Bolsonaro criou milhões de empregos formais"</h3>
-            <div class="quote-text">"Geramos mais de 4 milhões de postos formais. Ninguém fez tanto"</div>
-            <div class="reality">
-                CAGED: Bolsonaro saldo +1.1 milhão líquido (2019-2022). Lula gerou +3,2 milhões em período equivalente.
+
+        <!-- Escândalos -->
+        <div class="section">
+            <h2 class="section-title">💥 Escândalos & Controvérsias</h2>
+
+            <div class="card">
+                <h3>Investigação Rachadinha (2018-2023)</h3>
+                <div class="reality">
+                    Flávio acusado de desviar verba de gabinete enquanto deputado estadual. Sergio Moro (então juiz, depois ministro do pai) bloqueou investigação. STF anulou tudo. Questionável: impunidade vs. procedimento.
+                </div>
+                <div class="sources">
+                    <strong>Fontes:</strong>
+                    <a href="https://www.stf.jus.br/" target="_blank">Decisão STF</a>
+                    <a href="https://g1.globo.com/" target="_blank">Cobertura G1</a>
+                </div>
             </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.gov.br/trabalho/pt-br/assuntos/caged" target="_blank">CAGED — Dados oficiais de emprego</a>
-                <a href="https://www.bls.gov/" target="_blank">Comparativo Bolsonaro vs Lula</a>
+
+            <div class="card">
+                <h3>Controle Familiar da Candidatura (2024-2026)</h3>
+                <div class="reality">
+                    Jair controla agenda de Flávio publicamente. Flávio diverge = reprensão imediata. "Autonomia"? Narrativa desmentida por fatos.
+                </div>
             </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=📉%20ENGANADOR%3A%20%22Bolsonaro%20criou%20milhões%20de%20empregos%20formais%22%0A%0ACAGED%20contradiz%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-        <div class="lie-card">
-            <span class="category">FALSO</span>
-            <span class="date">Feb 15-16 2026</span>
-            <h3>"Desfile de Lula na Sapucaí usou dinheiro de impostos dos brasileiros"</h3>
-            <div class="quote-text">"Diferente do desfile eleitoral do Lula, esse vídeo não usou dinheiro dos impostos" e "Lula esfola o povo com aumento de impostos e usa esse mesmo dinheiro arrecadado para fazer campanha antecipada pra ele mesmo"</div>
-            <div class="reality">
-                A Acadêmicos de Niterói foi aprovada pelo Ministério da Cultura em Dec 2025 para captar R$ 5,1 milhões via Lei Rouanet. PORÉM, a escola REJEITOU explicitamente os recursos, alegando falta de tempo para buscar investidores. Lei Rouanet NÃO é dinheiro direto do governo — é incentivo fiscal onde pessoas/empresas privadas escolhem desviar parte de seu IR para projetos culturais aprovados. O desfile foi financiado com dinheiro privado.
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.gov.br/cultura/" target="_blank">MinC — Lei Rouanet explicada</a>
-                <a href="https://www.folhapress.com.br" target="_blank">Folha — Fact-check Sapucaí 2026</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=🎭%20FALSO%3A%20%22Desfile%20de%20Lula%20usou%20dinheiro%20de%20impostos%22%0A%0AA%20Lei%20Rouanet%20é%20incentivo%20fiscal%2C%20não%20gasto%20público%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
+
+            <div class="card">
+                <h3>Rejeição do Mercado Financeiro (2025-2026)</h3>
+                <div class="reality">
+                    Bancos, agronegócio, financeiro preferem Tarcísio ou Neves. Flávio visto como extremista, risco político. Bolsonaro toxina para negócios.
+                </div>
             </div>
         </div>
-    
     </div>
-    
-    <div class="container">
-        <h2 class="section-title">🔄 Contradições Flagrantes</h2>
-        
-        <div class="lie-card">
-            <h3>🗣️ "Sou diferente do meu pai, mais moderado"</h3>
-            <h3 style="color: #ff8888; margin-top: 20px;">VS</h3>
-            <h3>"Vou libertar meu pai e reformar o STF"</h3>
-            <div class="reality">
-                Se é 'diferente', por que promete fazer exatamente o que o pai faria? Se é 'moderado', por que campanha se chama 'em nome do pai'?
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.folhapress.com.br" target="_blank">Folha — Discursos Flávio campanha</a>
-                <a href="https://g1.globo.com/" target="_blank">G1 — Cobertura campanha 2026</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=🔄%20CONTRADIÇÃO%3A%20%22Sou%20diferente%20do%20meu%20pai%22%20vs%20%22Vou%20libertar%20meu%20pai%22%0A%0AVira veja%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-        <div class="lie-card">
-            <h3>🗣️ "Odeio ideologia, quero pragmatismo"</h3>
-            <h3 style="color: #ff8888; margin-top: 20px;">VS</h3>
-            <h3>Alimenta "guerra cultural"</h3>
-            <div class="reality">
-                Define-se como pragmático, mas sua base política é exatamente ideológica (identitária, contra-progressista).
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www1.folha.uol.com.br/" target="_blank">Folha — Análise base eleitoral Flávio</a>
-                <a href="https://www.datasenado.org.br/" target="_blank">DataSenado — Pesquisas eleitorais</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=🔄%20CONTRADIÇÃO%3A%20%22Pragmatismo%22%20vs%20%22Guerra%20cultural%22%0A%0AVira veja%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-    </div>
-    
-    <div class="container">
-        <h2 class="section-title">💣 Escândalos</h2>
-        
-        <div class="lie-card">
-            <h3>Investigação 'Rachadinha' (Corrupção no RJ)</h3>
-            <div class="reality">
-                Flávio foi investigado por possível esquema de 'rachadinha' durante seu governo no RJ. O caso foi anulado por Sergio Moro ter sido juiz parcial.
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.stf.jus.br/" target="_blank">STF — Decisão sobre parcialidade Moro</a>
-                <a href="https://g1.globo.com/" target="_blank">G1 — Investigação rachadinha RJ</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=💣%20ESCÂNDALO%3A%20Investigação%20'Rachadinha'%0A%0AConheça%20a%20história%20completa%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-        <div class="lie-card">
-            <h3>Pressões da Família Bolsonaro</h3>
-            <div class="reality">
-                Candidatura de Flávio é vista como candidatura do pai via procuração. Jair ainda controla a base, dita posições.
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www1.folha.uol.com.br/" target="_blank">Folha — Análise famílial Bolsonaro</a>
-                <a href="https://www.politica.com.br/" target="_blank">Política — Controle Bolsonaro na campanha</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=💣%20ESCÂNDALO%3A%20Controle%20da%20família%20Bolsonaro%0A%0AVira o fact-check%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-        <div class="lie-card">
-            <h3>Rejeição Alta no Mercado</h3>
-            <div class="reality">
-                Mercado financeiro prefere Tarcísio (SP) a Flávio. Banqueiros reconhecem competência de Tarcísio; de Flávio, veem 'risco Bolsonaro'.
-            </div>
-            <div class="card-sources">
-                <strong>Fontes:</strong>
-                <a href="https://www.valor.com.br/" target="_blank">Valor — Rejeição mercado Flávio</a>
-                <a href="https://www.sebraemercado.com.br/" target="_blank">SEBRAE — Pesquisa mercado 2026</a>
-            </div>
-            <div class="card-share">
-                <a href="https://wa.me/?text=💣%20ESCÂNDALO%3A%20Rejeição%20do%20mercado%20financeiro%0A%0ASaiba%20por%20quê%3A%0Ahttps%3A%2F%2Flis-sil-grazi.github.io%2Fflavio-bolsonaro-mentirometro%2F" class="card-whatsapp-btn">
-                    <span>💬</span>
-                    Compartilhar
-                </a>
-            </div>
-        </div>
-    
-    </div>
-    
+
     <footer>
-        <p><strong>Mentirómetro Flávio Bolsonaro</strong> — Fact-checking para cidadania informada 🇧🇷</p>
-        <p style="margin-top: 15px; font-size: 0.9em;">Todas as informações aqui são baseadas em verificações de órgãos como IBGE, CAGED, Polígrafo e cobertura jornalística.</p>
-        <p style="margin-top: 10px; font-size: 0.85em;">Atualizado: February 2026</p>
+        <p><strong>Fact-checking para cidadania informada 🇧🇷</strong></p>
+        <p>Todas as informações verificadas em fontes oficiais (IBGE, STF, CNJ, Tesouro, CAGED)</p>
+        <p>Atualizado: Fevereiro 2026</p>
     </footer>
+
+    <script>
+        // Share button functionality
+        document.querySelectorAll('.share-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.card');
+                const title = card.querySelector('h3').textContent;
+                const url = 'https://lis-sil-grazi.github.io/flavio-bolsonaro-mentirometro/';
+                const text = `Mentirómetro Flávio: "${title}" — fact-check verificado ${url}`;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Mentirómetro Flávio',
+                        text: text,
+                        url: url
+                    });
+                } else {
+                    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+                    window.open(whatsappUrl, '_blank');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
